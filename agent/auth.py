@@ -45,6 +45,25 @@ def permission_denied(reason: str) -> dict[str, Any]:
     return {"ok": False, "error": "permission_denied", "reason": reason}
 
 
+def order_permission_denied(ctx: AuthContext, order_id: int, action: str) -> dict[str, Any]:
+    """Explain an already-denied order scope check without revealing its owner,
+    store, status, or other private order fields. Does not grant permissions.
+    """
+    if ctx.role == "merchant":
+        code = "outside_merchant_store_scope"
+        explanation = "Merchants may access orders only within their own store; this request is outside that permitted scope."
+    elif ctx.role == "shopper":
+        code = "outside_shopper_ownership_scope"
+        explanation = "Shoppers may access only their own orders; this request is outside that permitted scope."
+    else:
+        code = "outside_authorized_scope"
+        explanation = "This request is outside the caller's authorized scope."
+    return {
+        "ok": False, "error": "permission_denied", "denial_reason": code,
+        "reason": explanation,
+    }
+
+
 def can_view_order(ctx: AuthContext, order_user_id: int, order_store_id: int) -> bool:
     """Access matrix rows 'view own orders' and 'view store's orders'.
 

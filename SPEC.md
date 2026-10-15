@@ -63,6 +63,11 @@ The threshold is `refund_auto_approve_threshold_usd` in `facts.yaml` ($100).
 ## 4. Tools
 
 Successful results contain `ok: true` and the result fields. Expected failures contain `ok: false`, an `error` code, and a human-readable `reason`. Unexpected execution failures raise exceptions.
+Order-scope permission denials additionally contain `denial_reason`, a structured
+code distinguishing an order outside a merchant's store scope from one outside
+a shopper's ownership scope. Explain the scope restriction rather than implying
+the role cannot use the capability. Do not disclose the actual owner, store,
+status, or other inaccessible order details in the explanation.
 
 | ID | Tool | Inputs | Side effects | Risk |
 | --- | --- | --- | --- | --- |
@@ -92,6 +97,24 @@ Successful results contain `ok: true` and the result fields. Expected failures c
 
 ## 5. Escalation policy
 
+### Applicable return-policy resolution
+
+For an authorized order's return window, conditions, or special requirements,
+use `get_applicable_policies(order_id, topic="returns")`. It selects explicit
+store policy relationships, applies the store's window override, and retains
+the remaining platform conditions. It is read-only and does not approve or
+execute returns/refunds. The eligibility tool reuses the same resolution.
+Missing or contradictory published policies and configured rules are surfaced
+as data inconsistency rather than resolved by search ranking or guesswork.
+
+Deadline semantics remain unspecified: the current policy does not define
+whether request, shipment, carrier acceptance, or store receipt must occur by
+the cutoff. The existing eligibility oracle uses an inclusive elapsed-calendar-
+day check. Label its calculated cutoff accordingly; do not present it as a
+verified procedural deadline or invent time-of-day/time-zone rules. Surface
+unknown listing-condition details rather than inventing unused/original-
+packaging requirements. Seek human clarification for unresolved requirements.
+
 The following cases always go to a human:
 
 - **ESC-1.** Refunds above the threshold; the tool queues the refund, and the agent explains the result.
@@ -104,8 +127,15 @@ The following cases always go to a human:
 
 Requirements that do not fit in the sections above, including tone and style guidelines.
 
-- **RESP-1.** Cite the policy identifier for every claim derived from a policy document.
+- **RESP-1.** Cite the retrieved policy's human-readable title for every policy-derived claim. Keep internal policy identifiers in tool calls and records, not in shopper-facing prose. Explain the specific applicable rule and connect it to the user's situation; naming a policy or saying "eligibility checks failed" is insufficient.
 - **RESP-2.** Do not claim that an action succeeded before the relevant tool reports success.
 - **RESP-3.** State when required information is missing or inconsistent, rather than inventing a value.
 - **RESP-4.** Explain refusals and escalations without revealing inaccessible order or user information.
-- **RESP-5.** Use direct and respectful language that explains the relevant decision.
+- **RESP-5.** Use polite, professional, direct, and respectful language that explains the relevant decision. When denying a requested refund, briefly acknowledge the disappointing outcome with wording such as "Sorry, this order isn't eligible for a refund," then explain the supported reason and cite the applicable policy. Do not invent exceptions or imply an action occurred.
+- **RESP-6.** Treat a question about order status as a request for current status, even when the user omits the word "current". Answer in full-sentence prose with only the latest recorded order event and its date when available. Do not include earlier events, internal identifiers, refund eligibility, unsolicited offers, or raw tool results unless the user asks for them. State when the latest event or its date is missing or inconsistent rather than inventing it. Requests for order history or broader order details may require additional information.
+- **RESP-7.** Answer the user's actual question first, using polite, professional language and relevant, user-facing information. Include only information needed to make the answer understandable, accurate, and actionable. Provide enough information to resolve the request; additional detail is not a substitute for missing essential information. Avoid unrelated facts or rules, redundancy, internal identifiers, unsolicited offers, and unnecessary closing invitations. Use natural-language prose rather than raw tool results.
+- **RESP-8.** For broad shopper-facing order-details requests, include useful purchase and delivery information and the vendor. Prefer a product name when retrieved; omit internal product identifiers unless requested. Do not invent missing names or images. Combine overlapping facts, such as delivery status and delivery date. A user-facing order number may identify the order. Discuss refund eligibility or offer refunds/returns only when relevant to a user-requested refund or return question.
+- **RESP-9.** A refund denial must explain the applicable eligibility condition and cite a retrieved policy supporting it; a bare eligibility flag is not an explanation. Retrieve applicable platform and store-specific policies before making policy claims. Include order facts only as needed to explain that condition. If the data or policy does not establish the reason, state the uncertainty and follow the escalation requirements.
+- **RESP-10.** Omit internal unique identifiers, including product IDs and policy IDs, from ordinary shopper-facing answers. Use meaningful product names and readable policy titles instead. A user-facing order number may identify the order. For refund approval or denial, explain the particular rule supporting the decision, including the applicable window or threshold when relevant, and how the retrieved order facts satisfy or fail that rule. Do not invent missing decision evidence.
+- **RESP-11.** When explaining any decision, connect the outcome, applicable rule, and case-specific facts showing how the rule applies. An outcome label alone is not an explanation. Retrieved sources must support the specific claim; sharing the topic of the question is insufficient. Distinguish established facts from missing evidence and never invent why a decision was made.
+- **RESP-12.** Tailor answers to the caller's authenticated role and relationship to the subject. Address shoppers as purchasers only when ownership is established, merchants as store operators, and support staff as assisting another user. Do not imply that an order belongs to the caller merely because they can access it. For support lookups, say "The order" rather than "Your order" unless ownership is established. Keep role-specific wording relevant to the request; do not announce the role unnecessarily. This presentation requirement does not change authorization rules.

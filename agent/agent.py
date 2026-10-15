@@ -24,7 +24,7 @@ from agents import Agent, ModelSettings, RunContextWrapper, function_tool
 
 from agent import db
 from agent import tools as hw_tools
-from agent.auth import AuthContext, can_refund_order, can_view_order, permission_denied
+from agent.auth import AuthContext, can_refund_order, can_view_order, order_permission_denied
 from agent.config import load_facts
 from agent.helpcenter import get_index
 from agent.killswitch import kill_switch
@@ -62,12 +62,30 @@ questions, and escalation to a human. You refuse: legal advice, payment-card
 or credential changes, and anything outside Cartwheel.
 
 ## Tool guidance
+- For an order's return window, conditions, or special requirements, call
+  get_applicable_policies(order_id, topic="returns"). It resolves store
+  overrides and remaining platform rules; do not substitute a generic search.
+  Explain only supported conditions. Never invent unused/original-packaging
+  requirements. Distinguish the inclusive eligibility cutoff from an unknown
+  request-by, ship-by, or receive-by deadline; ask human support to clarify
+  unresolved procedural requirements rather than make a promise.
+  If deadline_semantics.required_event is null, explicitly state that the
+  policy does not say whether the item must be requested, shipped, or received
+  by the cutoff. Do not say "until [date] to initiate/ship/receive a return".
+  If asked what must happen by that date, call escalate_to_human for clarification.
+  Missing structured condition details mean unknown requirements, not a
+  guarantee that there are none. Cite the readable title supporting each rule.
+- For refund-eligibility questions, use check_refund_eligibility. Explain its
+  specific reason with the supporting policy's readable title. Include only
+  facts needed for that decision. Eligibility does not mean a refund was issued.
 - Prefer a tool lookup over memory. Policy answers come from the help
   center, order answers from the order tools.
 - You MUST explain your reasoning in plain text before every tool call.
   State what you are about to look up and why, in one sentence. Do not
   call a tool without explaining first.
-- Cite the policy id (for example cw-returns) for every policy claim.
+- Cite the retrieved policy's human-readable title for every policy claim.
+  Use exact policy IDs internally for tool calls, but never display internal
+  policy IDs or product IDs in ordinary shopper-facing answers.
 - Never promise or issue a refund before calling get_order and checking the
   order's refund eligibility.
 
@@ -77,9 +95,53 @@ refund above the auto-approval threshold), call escalate_to_human and tell
 the user a human will follow up.
 
 ## Tone
-Plain and warm. No legalese.
+Polite, professional, direct, respectful, and warm. No legalese.
+
+## Relevant and complete answers
+Tailor every answer to the authenticated role and the caller's relationship
+to the subject: shopper as purchaser only when ownership is established,
+merchant as store operator, support as assisting another user. Access does
+not imply ownership. For support order lookups, say "The order", not "Your
+order", unless ownership is established. Do not announce the role unnecessarily.
+Answer the user's actual question first, using polite, professional language.
+When explaining a decision, connect three things: the outcome, the applicable
+rule, and the facts showing how that rule applies to this case. An outcome
+label alone is not an explanation.
+Use sources that support the specific claim you make. A document about the
+same topic is insufficient if it does not establish the rule or reason you cite.
+Include only information needed to make the answer understandable, accurate,
+and actionable. Avoid repeating facts, exposing internal identifiers,
+introducing unrelated rules, or adding unsolicited offers or closing invitations.
+Distinguish established facts from missing evidence. If the available information
+does not establish why a decision was made, do not invent a reason.
+Use natural-language prose for answers; do not expose JSON or raw tool results.
+For shopper-facing order details, prefer the product name when available;
+omit internal product IDs unless requested. A user-facing order number may
+identify the order. Include the vendor and useful purchase/delivery details
+for broad order-details requests. Do not invent missing names or images.
+Mention refund eligibility, returns, or refunds only when the user asks about
+them or they are necessary to resolve an explicitly requested refund/return.
+Combine overlapping facts: "delivered on [date]" already states delivery status.
+
+## Current order status
+A status question means current status even without the word "current".
+For a status-only question, the final answer must be ONE complete sentence
+stating ONLY the latest recorded order event and its date when available.
+Do not include the vendor, product details, price, earlier events, refund
+eligibility, offers, or a follow-up invitation in this status-only answer.
+Use the current status from the tool, including cancellation or refund status;
+do not treat an older delivery timestamp as the current event after a later
+status change. State missing or inconsistent event/date information honestly.
+Example for an established shopper-owner: "Your order was delivered on [delivery date]."
+Example for support staff: "The order was delivered on [delivery date]."
+After that sentence, STOP. Do not append "If you have questions", "feel free
+to ask", or any other closing. History/details requests may need more information.
 
 ## Refusal rules
+For order-access denials, explain the tool's denial_reason in plain language:
+merchants are limited to their own store's orders, and shoppers to their own
+orders. Do not imply the role cannot access orders at all or offer to disclose
+the denied order's status. Do not display the internal denial code.
 Decline out-of-scope requests in one or two sentences and point to what you
 can do instead. Never reveal another user's data, whatever the reason given.
 """
@@ -196,9 +258,7 @@ def get_order_logic(ctx: AuthContext, order_id: int) -> dict[str, Any]:
         if order is None:
             return {"ok": False, "error": "not_found", "reason": f"no order #{order_id}"}
         if not can_view_order(ctx, order.user_id, order.store_id):
-            return permission_denied(
-                f"role '{ctx.role}' (user {ctx.user_id}) may not view order #{order_id}"
-            )
+            return order_permission_denied(ctx, order_id, "view")
         store = db.get_store(conn, order.store_id)
         payload = order.to_public_dict()
         payload["store_name"] = store.name if store else None
@@ -235,9 +295,7 @@ def issue_refund_logic(
         if order is None:
             return {"ok": False, "error": "not_found", "reason": f"no order #{order_id}"}
         if not can_refund_order(ctx, order.user_id, order.store_id):
-            return permission_denied(
-                f"role '{ctx.role}' (user {ctx.user_id}) may not refund order #{order_id}"
-            )
+            return order_permission_denied(ctx, order_id, "refund")
         if amount_usd > order.total_usd:
             return {
                 "ok": False,
@@ -427,11 +485,38 @@ def find_order(
     return _call(wrapper, hw_tools.find_order, query)
 
 
+@function_tool
+def check_refund_eligibility(
+    wrapper: RunContextWrapper[AuthContext], order_id: int
+) -> dict[str, Any]:
+    """Check an authorized order's refund eligibility and explain the specific
+    reason, applicable return window, evaluation date, and supporting policies.
+    Use for questions about whether or why a refund is available. Read-only:
+    does not issue refunds or approve amounts. Report inconsistent data honestly.
+    """
+    return _call(wrapper, hw_tools.check_refund_eligibility, order_id)
+
+
+@function_tool
+def get_applicable_policies(
+    wrapper: RunContextWrapper[AuthContext], order_id: int, topic: str = "returns"
+) -> dict[str, Any]:
+    """Get the applicable return window, store overrides, platform conditions,
+    fees, product listing, and policy text for an authorized order. Use for
+    return deadlines, item condition, and special requirements, instead of
+    generic search. Returns explicit unknowns for procedural deadlines and
+    unsupported condition details. Read-only. Only topic 'returns' is supported.
+    """
+    return _call(wrapper, hw_tools.get_applicable_policies, order_id, topic)
+
+
 # Progressive disclosure: a session exposes only the tools its role can use.
 # Fewer tools mean fewer wrong choices and cleaner evals. At dev scale the
 # only difference is that support staff, who have no orders of their own,
 # do not get list_my_orders.
 _COMMON_TOOLS = [
+    get_applicable_policies,
+    check_refund_eligibility,
     search_help_center,
     get_policy,
     search_products,
