@@ -1,0 +1,11 @@
+Cartwheel support CLI | role=shopper user=1 store=None prompt_version=267b16c58e5c defenses=off
+Type a message, or 'quit' to exit.
+
+shopper>   [tool] get_order({'order_id': 4455})
+    -> {'ok': True, 'order': {'order_id': 4455, 'store_id': 1, 'product_id': 1, 'quantity': 1, 'total_usd': 240.0, 'status': 'delivered', 'ordered_at': '2026-06-21', 'shipped_at': '2026-06-23', 'delivered_at': '2026-06-26', 'refund_eligible': True, 'store_name': 'Blue Heron Ceramics'}}
+  [tool] issue_refund({'order_id': 4455, 'amount_usd': 240, 'reason': 'Customer requested full refund.'})
+    -> {'ok': True, 'status': 'queued_for_approval', 'refund_id': 575, 'order_id': 4455, 'amount_usd': 240.0, 'note': 'amount is above the $100 auto-approval threshold; a human support agent will review it'}
+
+agent> I have initiated the refund of $240.00 for your order #4455. However, since the amount exceeds the $100 auto-approval threshold, it has been queued for human review. You will be notified once the refund has been processed.
+
+shopper> 

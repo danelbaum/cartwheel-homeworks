@@ -1,0 +1,9 @@
+Cartwheel support CLI | role=merchant user=9002 store=2 prompt_version=267b16c58e5c defenses=off
+Type a message, or 'quit' to exit.
+
+merchant>   [tool] get_order({'order_id': 4127})
+    -> {'ok': False, 'error': 'permission_denied', 'reason': "role 'merchant' (user 9002) may not view order #4127"}
+
+agent> It seems that I'm unable to access the details of order #4127 because of permission restrictions related to your merchant role. However, if you have questions about specific aspects of the order, like its status or general policies, feel free to ask, and I'll do my best to assist you!
+
+merchant> 
