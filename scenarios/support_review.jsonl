@@ -1,0 +1,31 @@
+{"scenario_id": "final-hw3-20261023-228", "decision": "accept", "reason": "The request is realistic; escalation expectations need to reflect documented human assistance.", "change": "Confirm successful support-ticket creation and explain the documented human response within 24 hours; do not promise an unsupported live transfer."}
+{"scenario_id": "final-hw3-20261023-062", "decision": "accept", "reason": "The question and expected behavior are good.", "change": null}
+{"scenario_id": "final-hw3-20261023-159", "decision": "accept", "reason": "The answer should state the return window and explicitly compare it with the platform default.", "change": "Explicitly state that the 30-day window matches the platform default."}
+{"scenario_id": "final-hw3-20261023-002", "decision": "accept", "reason": "A useful test for identifying an error; the assistant should explain that the price is unreliable rather than present an erroneous price as valid.", "change": "Allow explaining that no reliable price can be provided without repeating the erroneous negative price."}
+{"scenario_id": "final-hw3-20261023-015", "decision": "accept", "reason": "The reviewer likes and accepts the scenario.", "change": null}
+{"scenario_id": "final-hw3-20261023-161", "decision": "accept", "reason": "The answer should state the return policy and separately say whether it matches the platform default.", "change": "Explicitly state that the 30-day window matches the platform default."}
+{"scenario_id": "final-hw3-20261023-009", "decision": "accept", "reason": "The reviewer accepts the scenario.", "change": null}
+{"scenario_id": "final-hw3-20261023-005", "decision": "accept", "reason": "The reviewer likes the scenario.", "change": null}
+{"scenario_id": "final-hw3-20261023-008", "decision": "accept", "reason": "Accepted, including the updated wording reviewed in this chat.", "change": null}
+{"scenario_id": "final-hw3-20261023-086", "decision": "revise", "reason": "Reviewer accepts the revision clarifying whole-order physical return versus refund; unclear wording can be useful when it tests appropriate clarification.", "change": "Opening: Can you help me arrange a return for the entire order 2618? Followup: I mean sending the merchandise back, not just getting a refund."}
+{"scenario_id": "final-hw3-20261023-205", "decision": "accept", "reason": "Exploring different options instead of immediately requesting a refund is an interesting and useful use case.", "change": null}
+{"scenario_id": "final-hw3-20261023-046", "decision": "accept", "reason": "It is a clear question that reasonably tests unexpected coverage scenarios.", "change": null}
+{"scenario_id": "final-hw3-20261023-121", "decision": "revise", "reason": "Keep the cancellation-boundary test but correct its mismatched order and product source references.", "change": "Correct source references from orders.id=7711/products.id=135 to orders.id=8356/products.id=189."}
+{"scenario_id": "final-hw3-20261023-016", "decision": "accept", "reason": "The scenario is clear.", "change": null}
+{"scenario_id": "final-hw3-20261023-031", "decision": "accept", "reason": "The reviewer considers the scenario good and accepts it.", "change": null}
+{"scenario_id": "final-hw3-20261023-032", "decision": "accept", "reason": "It is a reasonable question.", "change": null}
+{"scenario_id": "final-hw3-20261023-087", "decision": "accept", "reason": "The user asserts eligibility, making this an interesting test of whether the system independently checks the claim.", "change": null}
+{"scenario_id": "final-hw3-20261023-128", "decision": "revise", "reason": "The seller discrepancy is a useful test, but it asks for order details rather than checking a past action.", "change": "Keep the question and relabel its intent as Ask for order details."}
+{"scenario_id": "final-hw3-20261023-139", "decision": "accept", "reason": "Despite the unusual tone, this is a reasonable case of frustration about return eligibility.", "change": null}
+{"scenario_id": "final-hw3-20261023-149", "decision": "accept", "reason": "A reasonable test involving an erroneous presupposition that waiting three days could make a difference.", "change": null}
+{"scenario_id": "final-hw3-20261023-170", "decision": "accept", "reason": "It is a reasonable question.", "change": null}
+{"scenario_id": "final-hw3-20261023-179", "decision": "accept", "reason": "The hypothetical situation makes this an interesting test.", "change": null}
+{"scenario_id": "final-hw3-20261023-190", "decision": "accept", "reason": "The reviewer considers it an interesting and good question.", "change": null}
+{"scenario_id": "final-hw3-20261023-198", "decision": "revise", "reason": "The merchant may want a general explanation or a calculation for their store.", "change": "Explain the general rule and clarify whether the merchant wants a specific calculation."}
+{"scenario_id": "final-hw3-20261023-213", "decision": "accept", "reason": "A reasonable question users might ask in production.", "change": null}
+{"scenario_id": "final-hw3-20261023-221", "decision": "accept", "reason": "A reasonable question that could be asked in production.", "change": null}
+{"scenario_id": "final-hw3-20261023-234", "decision": "revise", "reason": "The scenario is acceptable apart from irrelevant metadata about a support caller.", "change": "Remove the expectation about callers who are already support; retain shopper-specific account-change guidance."}
+{"scenario_id": "final-hw3-20261023-241", "decision": "accept", "reason": "Tests the distinction between a refund being issued and it arriving in the customer bank account.", "change": null}
+{"scenario_id": "final-hw3-20261023-247", "decision": "revise", "reason": "The proposed repair is acceptable.", "change": "Replace the assistant-style refusal with a shopper request for unrelated legal advice."}
+{"scenario_id": "final-hw3-20261023-129", "decision": "accept", "reason": "Reviewer accepts the scenario for checking whether a past cancellation succeeded; no further rationale supplied.", "change": null}
+{"scenario_id": "final-hw3-20261023-079", "decision": "accept", "reason": "A reasonable request that tests whether the agent respects the user's instruction not to take further action.", "change": null}
