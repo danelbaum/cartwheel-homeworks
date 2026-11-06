@@ -122,3 +122,11 @@ The Module 1 implementation tasks are marked `### YOUR CODE HERE (HW1)` or `### 
 
 > [!IMPORTANT]
 > The Module 1 handouts are in `homework/module-1/`. The [homework index](homework/README.md) lists all released assignments. A [video walkthrough](https://youtu.be/qO98jDayTHo?si=gLN5FZ3FDiAIs_gG) of how to attempt Homework 1 is also available.
+
+### Optional local Workshop tool tracing
+
+With Workshop running locally on port 5899, run `uv run python -m agent.cli --role shopper --user 1 --model gpt-4o-mini --trace --workshop`. `--trace` retains Langfuse; `--workshop` attaches a standard OTLP/HTTP exporter to that same provider. Model calls, tool arguments/results, timing, errors, and parent relationships are mirrored locally. Omit `--trace` for Workshop-only capture. `--trace-openai` cannot be combined with `--workshop`. Behavior without `--workshop` is unchanged.
+
+Content capture is scoped to Workshop-enabled invocations; both local destinations receive those model/tool payloads. No Raindrop cloud client or second global tracing provider is initialized. Workshop 0.1.24 needs legacy tool input/output aliases; the exporter adds them to a copy without changing Langfuse's spans. Repeated setup does not register duplicate exporters. Flush runs after each completed turn.
+
+The verification record is in `analysis/report/workshop_setup.json`. Three read-only policy turns were checked in both destinations; this is instrumentation verification, not completion of the optional homework review of 5–10 Workshop runs. Existing historical traces are not imported automatically.

@@ -1,0 +1,917 @@
+{
+  "created_at": "2026-11-06T21:12:44.118263+00:00",
+  "seed": 20261106,
+  "method": "Simple random sample without replacement from sorted eligible trace IDs.",
+  "exclusions": "All previously selected trace IDs and all active annotated trace IDs.",
+  "excluded_trace_ids": [
+    "0511e7037d427ada4e31535bd0c0c728",
+    "0c843e3b4b9a434f5144662d17cd6b93",
+    "10fd1ee14e334b4918e7b51a447c9ba4",
+    "114cf22c0b4d91edb8bfe99e48fb706d",
+    "16e27e81b2fad46d3ccad361fa0718c3",
+    "1861d1cca00a3b8bf373fdddb5527387",
+    "1d079d0233b8829ba25106792d77fcdf",
+    "1e0b2b8cbb559e7f54cf6cb947dd342a",
+    "252f99525ce707c162541fe53bbdb7f3",
+    "2fbb1d7108fe8f5a2e885582ca81ca7f",
+    "3591566581b910c6dd58648aafa3fc95",
+    "35d73a06128060594582a2820d473f85",
+    "35f1a50894cc065d0d1b2e10fdbc8104",
+    "363f4134696c24976e9cc8924f140dfa",
+    "36e6d474d1fb0c53c89ce72d3f43b9d9",
+    "378ea17644a6352768577a250beb64f3",
+    "39c5bcaae0cec711209e66e35b526258",
+    "3cb5d2d906c349f7f951c7c1d8ed39b6",
+    "3fca40479b48462e5f89a6d42ee6fe05",
+    "40eca4b7fdcbb26c7c0776a0d0526490",
+    "42d961c07dced194948df765d938f8fc",
+    "47806d2a3f5ef27947528224cd6e3957",
+    "48e124d528918f94c49b1abd32df5a06",
+    "4ab2b00397b5812cba226068ea1eb839",
+    "4bf15f8c5ebd5c716d8f280500ffdbe3",
+    "5068668faf3d7ed938611bfb8b01b7b4",
+    "507355b1a02f967e64ce7e39b82140f9",
+    "52a2e5596e33fe1b19b2afc0c8f10ddb",
+    "53daea77002ddd8877e41897a01d082a",
+    "54b84b1943a930554564eeac40cab57e",
+    "5652dd7e5b3fc222e3de36757a15a870",
+    "586ec9e1f07b276247a71db495aa4657",
+    "5b3c818bfb6e5c65839f46f3c21f5924",
+    "5bc134ddd8eebc8fce9d817dac39e84e",
+    "5c1296805109196faf0fcdff34ae84c6",
+    "5ecf18aaf0a4ddeb8fa341acfd427082",
+    "5ed4bb6834a4900c3c663bd8ada6cd00",
+    "60b844801b66c3bb23fc1a3d2eb66171",
+    "60ced1e03e1bb7dfc9f122e21de386f4",
+    "6299e48baa801eac8ee3c56ca93a22dc",
+    "64d915928128e7cc28ed8ef4ede17417",
+    "668249184092918091a2b3aa95fcb28d",
+    "6b9271fe50292c6bb0acd4034d2e066e",
+    "6e347d3655b784c8b45bd51792de78fd",
+    "6fc56ec6ff05aac834cde1b3c2575565",
+    "7be871be00354d72ea3e6a7429b36122",
+    "86fa7bf84ec1cf2ca10ff69e887f3355",
+    "8cda82d708770a42b74a07b59c22a9f9",
+    "8d8369cb7de609a7b8ed22b98461a029",
+    "93c127844239c36538bec6fe1bd3f214",
+    "9a0df02e1fea4dd79f016c41c1f1dd82",
+    "9c30e17f8db413412f40e4a374d28a42",
+    "a2af1375e691b7d0d837eed79d08804e",
+    "abfc08a0dd32331057e6ba74c41fd52e",
+    "ad75c8390791bf79e46dd2c60fd5ff95",
+    "b141116f2d0d238cc3cef5d0abaa8828",
+    "b2e1afbbd09785870f40e2f8cf7e1708",
+    "b307bd78d85eabbcf942160b1cb40770",
+    "b578bf5074a4f254b8285ae7ea39070f",
+    "c589c91959581662227a59cd7f16d60c",
+    "c8903fd70516351fb3d1120f449c8192",
+    "cb6308f0ebebe1f007ee89f41014ac79",
+    "cfc51b3fc8feaafdd183851782464a4b",
+    "d338a161eb8a924dea8d3af009e191a4",
+    "d5785e1b7868ec70ff4d0788e9ce7582",
+    "d70ccf5f90e302c4694cecf5aa5d1370",
+    "d9a482c867769ae815da84a0c6ff0efa",
+    "da93d815c67168f7b5c243e9be60225e",
+    "dd02f775dd15eee47f7633f4028d6504",
+    "dd55dd82082ab6f1e2b85659ea4c4477",
+    "e51fc0df8d40d14a1df001fcb1259916",
+    "e619462979b1ea25e1437f664bb97e37",
+    "e709c15cb202a2b6e8f00f653471463b",
+    "e9569f7fd4aad19dcb847a06929db226",
+    "eb7f0e1379513fabbe2d71751311c236",
+    "ee79a10d2f3da10fb1b785e524b94774",
+    "f0e64f5ea03e8bf42baf2e8676723645",
+    "f155d9e9a7ff0bf4375cfb6356c8d10c",
+    "f26941068517cb90cdf00f83bdde8c5c",
+    "f40c917f1973a4116771df80c59a2e10",
+    "f46b3312d4be25659c4a38c1d1f4803d",
+    "f60528b22297cd23314fc583ab85d90c",
+    "f617bec5837b13c23b3351fa4498f5c6",
+    "f70146b07412fe0d36bb2a9826550ac7",
+    "fe3e53fb1ce2a91bf88214e20400c738"
+  ],
+  "eligible_trace_ids": [
+    "0053d688f4210512aae4997a7adeffe6",
+    "066f74f1b9bcbfa12d81da5a254b3f7a",
+    "070ea6fbefff2941c781910b3d78c8dc",
+    "073cf1495a81808c27d58c090d0a3de3",
+    "0861e0f921d74d982bc68cddc4b37286",
+    "08dc76e50764150de5bdb8cb8663694e",
+    "0902e18fe62cd630e73b8d5bc7baea6b",
+    "0cc541db9a1125df3157bcac1dabf628",
+    "0d1aea238c5a5f43ffabef36b8b8a55e",
+    "0e1ffde36425e18de5a5691da01da070",
+    "10df2db310ad1d666d7d161fa252426e",
+    "115bd3285ed4aa001093521ca08ef4fa",
+    "117e0047878c066c12f5ce331e4175ee",
+    "11836f7d8ec5e58d33880fb5cd64cf35",
+    "119999671655c824510ab84712de4eb7",
+    "14f2c1cc958ac431da023b2b3a71adba",
+    "191b16412f70ea723d545df556ed76d7",
+    "1bf8684751ac5b7b31f8137058db59b3",
+    "244a552071d5bc612234b9fffad93dfb",
+    "250062c5b78f802d2471f9c1e51cda47",
+    "28d7a82cea5b674f0cb0bc888ddda42b",
+    "2bc9e3230c0e4543f7251a0757c52aab",
+    "2f7b51dbdce55af2665c5fd623c11291",
+    "3040239f15bc6749f0cf7c4d29243bc6",
+    "32fc50622dabf1df12b756c54c58d9ac",
+    "330b6dc839e17fcdd249768f2324840e",
+    "352489cda2766491bff9df55cdad272a",
+    "382ebdf52d92e0391fb8a908c0499ab7",
+    "3b9a21c0bd506a486d4191522154e128",
+    "3f0c60dc6ddb56e7c6737f1916fa1366",
+    "405b760b9ecce7c6afa25cb60696ea44",
+    "408b04c05e10a6f89b9088db80b0a824",
+    "4309d2b3fe859e23511c57f33da54ffe",
+    "43817f96fb5f7318eff5fc5583716a9c",
+    "484ea0847f6b537100c0bd20a760625e",
+    "492510e9dae81cdef3ef7ecd1479e0a5",
+    "4e57cf2b68a36614b94151d0b07f55bf",
+    "4fb19008024ecea00ec079ad8355363f",
+    "5261af4cdc3fe0cae84809e7a43a1c97",
+    "546bb2754a7469f1d08e7c4c634ad414",
+    "558fbc9f747824e9f7d94919fd441bee",
+    "55b1338121f150c2397ebb086b9a7042",
+    "56c1a7dc3ea7e3ad37d80a4e947cbbae",
+    "57e8bee8883e4426e52e1b0533cb960b",
+    "583fe5f9c948275d0a4cd23f8b13a29d",
+    "5cbbc0b09d9d4bbb709997ad2f33cef0",
+    "5f8e19d1111a2547478e870848c92df1",
+    "603065623228660fed83e61c9197f104",
+    "6a7f5bfcc706b2341dc1d49c87710d54",
+    "6a867401bfc977c7dde71c1db17aeeb8",
+    "6bbc0e8627460ee8d0dace226f074484",
+    "6c39ab1b1e665d4c7258541d3a839024",
+    "6c6bfd165d31407f0bc651a0b884c2a8",
+    "715ec2c649b305df4ddf8269725f8e88",
+    "7217b2b4f267d8b278b4b0a033b42edc",
+    "74441dec01d259bcbe4633cba6b1e8a2",
+    "74b99e5ac96081fc7271a9c4298d6bc0",
+    "75b832033bf8e2fb191bb8c760f67253",
+    "78b4c0ec07d70d5a39e324ee716fe16c",
+    "7baf879ab8c900e18e813a2211ac2323",
+    "7c4fef71cd91f9ca5b48a4e1f50d7a31",
+    "7d53c8fd1ed7b95bc9670af119efc5bc",
+    "8017d7693d6a88d02c2eb4d04dab7028",
+    "80b2b7d3038b862973ea1bf66d9042bc",
+    "8169758b4f982599c6d30925ffa7729e",
+    "82a5fe88a607ed98624e97200c06b65f",
+    "833bb12f119756cac64c21c41089efd9",
+    "83a1596584092e2984734f688cdf5d29",
+    "85e5a895e051e293274f797ec2d7e97d",
+    "863f1bc6d4cd0c4b466cee6c93910893",
+    "877d863560f8ee159c7eac5796eb2e68",
+    "8787a3bc69446fe2052dbeaf1fc09967",
+    "88201ac558fb0cc5a417fefd582584fe",
+    "892b44bbbe4c1cd6a44649ecf52dabc5",
+    "89a1ca06008a5a9efd1ce5828cd2b781",
+    "8b1ad8b7c974d52aae59329448ae8ee6",
+    "8c2569cafca4a2ee425bd3c93655a2c3",
+    "8d09957d25c109893e59a239d76cb2fd",
+    "8e57fbb1606c2d078759f3eaf52b5526",
+    "8fdde9a1fe68b2ecd828917c6454a5e3",
+    "915cc0f023ac0c422386addfc96e0f6a",
+    "9172e5653d12267b28278dba917d90cb",
+    "9388969ef56d04d64da40bc54a411696",
+    "95890b709b59e9824e87cbcb5c358832",
+    "95d0abfd760f75dd2774790d3895c4f5",
+    "95dba51b35f96fad5e5ed45d910b37e9",
+    "965f9350b02d06b5daa7a1606f0373d6",
+    "9790aa35e6c3a5d92bfb0fb0396bc924",
+    "9927e3f563a6f079224eff11c306f4c7",
+    "99d50075aa81dba784b7089fff14afaa",
+    "9b34fe017bb1901c6865b2a4874aad10",
+    "9caae1216c2f1e8194eb6adabd18c0ed",
+    "9d09c3d81866dc816a6cfad02375eeb8",
+    "9d4dcf8130c3aebeddbe046024807b16",
+    "a0b04278c46587df13dd27b1038d6e78",
+    "a36c29e9b11ef27a4ec79cc4d19a17c1",
+    "a401dc2baaa3686d0fa0679928a27aaa",
+    "a541466771fdd1ab7a39738e8d936b3a",
+    "a560c428acb4e7baf60c1b0f78bd0497",
+    "a9d43c262ed29b6dd46efa1ee6be1f32",
+    "ab4a0481156db525fb53be876fd791f7",
+    "ac23503889df9d5cc06c105ff84fe589",
+    "acca70f121f7bbd3cf303fa5bf809691",
+    "ad031254229668d0b94c1d2293bdd189",
+    "ad65494060236f02867dc907bb58379a",
+    "ad72ba68b820611c0a9076ee4585a740",
+    "ad9a53a27519cf1995e76e5ea26748fd",
+    "ada0ed1b5f339d641f92ec47fac33eab",
+    "ae9fa4c9d95ef38572df4fce5ec30512",
+    "aebec0b199ab7fd6cd245132e4fa60ab",
+    "b0bdfeb659f4b82abd24bbe68c443dea",
+    "b1bb3e5dafb73c42e60c2568746b1699",
+    "b2bb96d9e3dbe8968bf70402891540d5",
+    "b4255c4ae61ca59fc801c599205cee88",
+    "b58a354a02ed771d9ebf96a06f10cdbc",
+    "b62bcde6a6eb9d4da3ad868e6d42d5c5",
+    "b7cc699edaa3a646f7012f1a473ce175",
+    "b8cda98a949804daf60c6a9375bcd2c2",
+    "b8d916db52a5051e3ec86f0356fea982",
+    "b90842671248a6f964bc0b9d80310635",
+    "bc16997ddf797cb42657dca6bc4c8c63",
+    "bcbe0e04095d34588cea6704470e497c",
+    "bd3823bd5d36853e23dafcf96659cf4d",
+    "be1bd44195cf5a63adc3fee2618e7f5a",
+    "bf924367e74fc740ee5b6a6d5c29845e",
+    "c0d3d0ec0761ac28edb32e3a4c5f5da1",
+    "c23676c754f81713095c4dc34a113344",
+    "c3b719db661de06fddae0886b6037021",
+    "c5db05aeebba0dac2765b69014c74219",
+    "c62c9f70c908544fc9da01764d47a17d",
+    "c7cfdb5584ff0b29226164b3dbe8d10e",
+    "c96c44d4bae71cab8aa53025e097520d",
+    "c99f04487c20ff11929b746a9ec05236",
+    "c9d74ebc882acd2af1c1bccad60671b1",
+    "cb5ebb6c974e92d19c26351b072049e5",
+    "cc325d77c49564263701d55aefa463be",
+    "cc46711a062ccbf8d549421c9b17bd58",
+    "cc57fa5e59c5e4f6b7c81a27e3c1f2cc",
+    "cf25255b44fc0989a5563a83adb8d9a2",
+    "d2d72f697561d90818a0f4c57255d1f3",
+    "d3d2fdf80f3cff7d4aeb47d2a8c8b087",
+    "d4203a4dd6417d3df264884b57294ed4",
+    "d4ae0cdab42e76d734b88d2cb03b4e23",
+    "d6976a79c0c71d902f4dd215e6010436",
+    "d83ffc306fa40988fcafc559d8b1545a",
+    "d947e2e1d313b28068cf490b3236c570",
+    "dc7b6a2636e1d90dbe892f1940c7401a",
+    "de8262dd5aa9f311d4709b42398e712a",
+    "e250f550f284c00f930e4619391cabb0",
+    "e2d939942c5c8efd62ead6bf26561e8e",
+    "e2e48fab0edb468e720cde2a8726d1d1",
+    "e524d5e6916846342d2ca45b08f95114",
+    "e53ece7609a7d846c4a47f50429ffaac",
+    "e556351611bcd3cb05d3ab8cb394de3b",
+    "e6eb5eef36be1442fa6fa381ebfb15c1",
+    "e7e9f3282344565e380c39fefe55dca7",
+    "e9a230b8bb212023650581c9e1453490",
+    "ea1bd263a514105e9abed5b2c67e62ca",
+    "eb4fbba2cb94bc16418a89b0fb42f487",
+    "ebcfb339df3512117688906f00609e90",
+    "ebf9d8c48102f1dc3cb25fe2c917648a",
+    "ec153e1252d7a8d6f1880e84667787c1",
+    "ecf6632a676c4ede7577ef3e36fa0dd0",
+    "ee7932a0d3a674d31cc2c11b5ea9e7e5",
+    "ee7b81f16016707a468447cbfae74b70",
+    "eea3df694269f199d118a3c59df1b19a",
+    "ef5f060bbb80e1540dd0ad4062321c3d",
+    "f438584e3bb737fab073fc34d63e82c9",
+    "f5359c0ad21f16ed0630de2819e02efc",
+    "f8a8b9eabb43b27339f891a155d6bbec",
+    "f92d9e7fdccbf5a73a76b8953cedbd54",
+    "fb11daec6c245b13ff53a9de79c7841e",
+    "fe5fbbcf4f5d8f3040c22d1d0a864827",
+    "ff015aae980e8608dc3c17154d1e67f9"
+  ],
+  "selected_trace_ids": [
+    "ef5f060bbb80e1540dd0ad4062321c3d",
+    "117e0047878c066c12f5ce331e4175ee",
+    "2f7b51dbdce55af2665c5fd623c11291",
+    "484ea0847f6b537100c0bd20a760625e",
+    "7c4fef71cd91f9ca5b48a4e1f50d7a31",
+    "066f74f1b9bcbfa12d81da5a254b3f7a",
+    "eb4fbba2cb94bc16418a89b0fb42f487",
+    "95890b709b59e9824e87cbcb5c358832",
+    "ad031254229668d0b94c1d2293bdd189",
+    "8787a3bc69446fe2052dbeaf1fc09967",
+    "fb11daec6c245b13ff53a9de79c7841e",
+    "070ea6fbefff2941c781910b3d78c8dc",
+    "0902e18fe62cd630e73b8d5bc7baea6b",
+    "3b9a21c0bd506a486d4191522154e128",
+    "74441dec01d259bcbe4633cba6b1e8a2"
+  ],
+  "outcome_filters": "None. AI labels, response quality, and predicted failures were not used.",
+  "prior_ai_assessment": "Cohort was previously AI-assessed; this is a fresh human review sample, not an AI-unseen holdout.",
+  "taxonomy_sha256": "e403be03a1d71f4cb9a2a10fb82d5b8aaee6172bd75ddb26926af84177858572",
+  "taxonomy_at_selection": {
+    "modes": [
+      {
+        "name": "unverified_user_claim_as_fact",
+        "status": "accepted",
+        "definition": "The assistant presents a user-supplied claim as an established or independently verified fact without evidence verifying that particular claim. Verifying related information does not verify every part of the user’s account.",
+        "source": "AI-proposed category accepted as a candidate by the user; example labels remain unconfirmed.",
+        "requirement_source": [
+          "SPEC.md RESP-3",
+          "SPEC.md RESP-11"
+        ],
+        "boundary": "Exclude clearly attributed user reports, preferences, explicit assumptions, and claims independently supported by evidence available in the conversation, including prior turns. Distinguish unsupported policy claims from user-specific factual claims. Current eligibility alone does not establish a past decision’s cause; investigate that as unsupported_past_decision_explanation.",
+        "likely_evaluator": "LLM judge comparing user statements, tool evidence, and assistant attribution",
+        "candidate_examples": [
+          {
+            "trace_id": "3591566581b910c6dd58648aafa3fc95",
+            "scenario_id": "final-hw3-20261023-138",
+            "review_status": "pending_human_confirmation",
+            "reason": "User-supplied product name is presented as recorded order information although the tool result supplies a product ID, not a name."
+          },
+          {
+            "trace_id": "d9a482c867769ae815da84a0c6ff0efa",
+            "scenario_id": "final-hw3-20261023-043",
+            "review_status": "pending_human_confirmation",
+            "reason": "User-supplied product name is presented as recorded order information although the tool result supplies a product ID, not a name."
+          }
+        ],
+        "positive_trace_ids": [],
+        "negative_trace_ids": [],
+        "originating_annotations": [
+          "e4ddccfe-d700-4d59-8ff4-122d251b4c23"
+        ],
+        "remaining_work": "Human review of candidate examples; link confirmed supporting annotations; establish positive and close-negative examples.",
+        "revision_history": [
+          {
+            "revision": 1,
+            "definition": "The assistant presents a factual assertion supplied by the user as independently verified or recorded fact, without supporting evidence from an authoritative source available in the conversation.",
+            "boundary": "Does not include clearly attributed user reports, explicit assumptions, or assertions independently corroborated by tool evidence. User-reported facts need not all be independently verified; the failure is representing them as verified. Distinct from unsupported policy claims, which concern asserted rules.",
+            "superseded_at": "2026-11-06T17:51:20.169275+00:00"
+          }
+        ],
+        "revision": 2,
+        "revision_reason": "User-approved clarification following round-one review: claim-by-claim verification. Scenario 128 supports checking product name separately from seller; 131 supplies a close contrast. Notes on 148 concern historical inference, while 096 and 121 emphasize policy grounding.",
+        "updated_at": "2026-11-06T17:51:20.169275+00:00",
+        "supporting_observations": [
+          {
+            "annotation_id": "e4ddccfe-d700-4d59-8ff4-122d251b4c23",
+            "trace_id": "abfc08a0dd32331057e6ba74c41fd52e",
+            "scenario_id": "final-hw3-20261023-128",
+            "note": "There were missing tool calls here, and this wasn't verified.",
+            "mapping_status": "proposed_not_binary_label"
+          }
+        ],
+        "review_cautions": [
+          "099 asks for a $100 refund rather than asserting the order price; a partial refund request is not evidence of an incorrect user-stated price. Do not treat it as a confirmed positive without re-review.",
+          "Existing candidate examples 043 and 138 remain unconfirmed."
+        ],
+        "acceptance": "User accepted definitions and authorized AI labeling; supporting examples are not thereby human-confirmed."
+      },
+      {
+        "name": "insufficient_directness",
+        "status": "accepted",
+        "definition": "The response delays or obscures the answer to the actual question behind generalities or procedural narration.",
+        "boundary": "Reorder to fix directness; delete to fix excess detail; rephrase to fix wording. A clear answer need not literally begin Yes or No.",
+        "requirement_source": [
+          "SPEC.md RESP-7"
+        ],
+        "likely_evaluator": "LLM judge",
+        "originating_annotations": [
+          "1d018313-fd43-4191-b5a2-d5f9c9e9b483",
+          "f6b304e9-3e01-4164-840d-6f5af80ed950",
+          "e29b134f-b734-4c37-9ce7-881d26f9c487",
+          "072df5c6-3c60-49cc-8c06-2b1b68d5de0e",
+          "19157d04-e155-4363-a06a-ff33752157a8",
+          "d5fe0644-715a-47b0-a53e-6e9a77202ddf",
+          "09996442-a29c-4da8-92f4-912697cedf9c",
+          "252f5865-cec0-4613-ba7e-d5fac3ec0c89"
+        ],
+        "supporting_observations": [
+          {
+            "annotation_id": "1d018313-fd43-4191-b5a2-d5f9c9e9b483",
+            "trace_id": "52a2e5596e33fe1b19b2afc0c8f10ddb",
+            "scenario_id": "final-hw3-20261023-135",
+            "note": "The user asked a yes-or-no question, but the answer didn't begin with yes or no. I think it should directly answer the question as soon as possible.",
+            "mapping_status": "AI-organized originating observation; not a binary human label"
+          },
+          {
+            "annotation_id": "f6b304e9-3e01-4164-840d-6f5af80ed950",
+            "trace_id": "6e347d3655b784c8b45bd51792de78fd",
+            "scenario_id": "final-hw3-20261023-057",
+            "note": "Again, we have the case of a yes-or-no question, not the answer not starting with yes or no.",
+            "mapping_status": "AI-organized originating observation; not a binary human label"
+          },
+          {
+            "annotation_id": "e29b134f-b734-4c37-9ce7-881d26f9c487",
+            "trace_id": "10fd1ee14e334b4918e7b51a447c9ba4",
+            "scenario_id": "final-hw3-20261023-227",
+            "note": "This is fine, but again, the user asked a yes-or-no question, and here the answer appears to be yes. I think the system's answer should always start with yes or no when the user's question is a yes-or-no question. It should say, \"Yes, and I just need some more information in order to do that.\"",
+            "mapping_status": "AI-organized originating observation; not a binary human label"
+          },
+          {
+            "annotation_id": "072df5c6-3c60-49cc-8c06-2b1b68d5de0e",
+            "trace_id": "39c5bcaae0cec711209e66e35b526258",
+            "scenario_id": "final-hw3-20261023-112",
+            "note": "The user asked a yes/no question and the answer is no, so the systems' response should begin with the word NO",
+            "mapping_status": "AI-organized originating observation; not a binary human label"
+          },
+          {
+            "annotation_id": "19157d04-e155-4363-a06a-ff33752157a8",
+            "trace_id": "35d73a06128060594582a2820d473f85",
+            "scenario_id": "final-hw3-20261023-176",
+            "note": "Again, this is a yes-or-no question that should be answered with a clear yes.",
+            "mapping_status": "AI-organized originating observation; not a binary human label"
+          },
+          {
+            "annotation_id": "d5fe0644-715a-47b0-a53e-6e9a77202ddf",
+            "trace_id": "e9569f7fd4aad19dcb847a06929db226",
+            "scenario_id": "final-hw3-20261023-139",
+            "note": "It would be good if the date was stated right up front: had expired on December 30th.",
+            "mapping_status": "AI-organized originating observation; not a binary human label"
+          },
+          {
+            "annotation_id": "09996442-a29c-4da8-92f4-912697cedf9c",
+            "trace_id": "fe3e53fb1ce2a91bf88214e20400c738",
+            "scenario_id": "final-hw3-20261023-054",
+            "note": "Should say yes directly",
+            "mapping_status": "AI-organized originating observation; not a binary human label"
+          },
+          {
+            "annotation_id": "252f5865-cec0-4613-ba7e-d5fac3ec0c89",
+            "trace_id": "dd02f775dd15eee47f7633f4028d6504",
+            "scenario_id": "final-hw3-20261023-190",
+            "note": "There's no reason to include all of this generic junk when more specific information is available. There's also no reason for the system to say that it's going to check something and then later respond again. It should just check whatever it needs to before answering.",
+            "mapping_status": "AI-organized originating observation; not a binary human label"
+          }
+        ],
+        "positive_trace_ids": [],
+        "negative_trace_ids": [],
+        "revision": 1,
+        "updated_at": "2026-11-06T19:40:52.877647+00:00",
+        "source": "Proposed grouping of human observations; supporting mappings and binary labels await human confirmation.",
+        "remaining_work": "Confirm mappings, resolve requirement gaps, and establish at least three positives and three close negatives where available before finalizing.",
+        "requirement_gap": "A mandatory literal Yes/No opening is a proposed preference, not an existing requirement.",
+        "acceptance": "User accepted definitions and authorized AI labeling; supporting examples are not thereby human-confirmed."
+      },
+      {
+        "name": "technical_or_formal_wording",
+        "status": "accepted",
+        "definition": "Information useful to the caller is expressed in unnecessarily technical, robotic, or formal language that impairs understanding.",
+        "boundary": "The information should remain but be rephrased. If the problem is disclosure of internal operation itself, use unnecessary_internal_operation_disclosure. Technical terms needed for accurate expectations are not automatically failures.",
+        "requirement_source": [
+          "SPEC.md RESP-5",
+          "SPEC.md RESP-7"
+        ],
+        "likely_evaluator": "LLM judge",
+        "originating_annotations": [
+          "aa15f8a6-35b9-49c9-802b-d3186508f316",
+          "d1a82cae-1bd7-4f9f-a4b4-cc6fd32bfb38",
+          "117a3592-81c0-4b65-b522-8d5f7ce18832",
+          "20a5a84f-8459-4c5d-ba3b-6880b6c18e48",
+          "8ab5b177-d3ec-4216-8496-cd625b1145ae",
+          "09e37af0-7df2-4c5f-89ec-63f757b58cee"
+        ],
+        "supporting_observations": [
+          {
+            "annotation_id": "aa15f8a6-35b9-49c9-802b-d3186508f316",
+            "trace_id": "1e0b2b8cbb559e7f54cf6cb947dd342a",
+            "scenario_id": "final-hw3-20261023-233",
+            "note": "This sounds very formal and technical, as opposed to conversational.",
+            "mapping_status": "AI-organized originating observation; not a binary human label"
+          },
+          {
+            "annotation_id": "d1a82cae-1bd7-4f9f-a4b4-cc6fd32bfb38",
+            "trace_id": "10fd1ee14e334b4918e7b51a447c9ba4",
+            "scenario_id": "final-hw3-20261023-227",
+            "note": "This is so technical that it sounds robotic",
+            "mapping_status": "AI-organized originating observation; not a binary human label"
+          },
+          {
+            "annotation_id": "117a3592-81c0-4b65-b522-8d5f7ce18832",
+            "trace_id": "39c5bcaae0cec711209e66e35b526258",
+            "scenario_id": "final-hw3-20261023-112",
+            "note": "The language here is too technical.",
+            "mapping_status": "AI-organized originating observation; not a binary human label"
+          },
+          {
+            "annotation_id": "20a5a84f-8459-4c5d-ba3b-6880b6c18e48",
+            "trace_id": "86fa7bf84ec1cf2ca10ff69e887f3355",
+            "scenario_id": "final-hw3-20261023-140",
+            "note": "This language is too technical and formal-sounding",
+            "mapping_status": "AI-organized originating observation; not a binary human label"
+          },
+          {
+            "annotation_id": "8ab5b177-d3ec-4216-8496-cd625b1145ae",
+            "trace_id": "4ab2b00397b5812cba226068ea1eb839",
+            "scenario_id": "final-hw3-20261023-141",
+            "note": "This language is too technical. It would be more understandable to say it's not associated with your store.",
+            "mapping_status": "AI-organized originating observation; not a binary human label"
+          },
+          {
+            "annotation_id": "09e37af0-7df2-4c5f-89ec-63f757b58cee",
+            "trace_id": "4ab2b00397b5812cba226068ea1eb839",
+            "scenario_id": "final-hw3-20261023-141",
+            "note": "This language is too technical and formal. It should just say, \"No, I can't do that because the order isn't with your store, because I can only help with orders from your store,\" or something like that.",
+            "mapping_status": "AI-organized originating observation; not a binary human label"
+          }
+        ],
+        "positive_trace_ids": [],
+        "negative_trace_ids": [],
+        "revision": 1,
+        "updated_at": "2026-11-06T19:40:52.877647+00:00",
+        "source": "Proposed grouping of human observations; supporting mappings and binary labels await human confirmation.",
+        "remaining_work": "Confirm mappings, resolve requirement gaps, and establish at least three positives and three close negatives where available before finalizing.",
+        "acceptance": "User accepted definitions and authorized AI labeling; supporting examples are not thereby human-confirmed."
+      },
+      {
+        "name": "unnecessary_detail_or_repetition",
+        "status": "accepted",
+        "definition": "The response includes irrelevant customer-facing facts or repeats information without helping the caller understand or act.",
+        "boundary": "Delete redundant or irrelevant content. Internal mechanisms disclosed without a customer purpose belong in unnecessary_internal_operation_disclosure; useful information worded poorly belongs in technical_or_formal_wording. Do not mark the same passage in all three solely because it is verbose.",
+        "requirement_source": [
+          "SPEC.md RESP-7"
+        ],
+        "likely_evaluator": "LLM judge",
+        "originating_annotations": [
+          "d2b9587d-e46a-495c-b41c-575e7db32d95",
+          "cc470d28-ad1a-471d-bd16-0989f5bf74f6",
+          "338e4e7e-415a-4bba-8c4c-675eb4469e66",
+          "88ef6485-9e37-4b10-8400-910beccf8bb9",
+          "de4db9b1-e647-4f50-b10c-7cc3522c71ae",
+          "3735d3d1-2dc9-45d6-92b5-9cb141504d1e",
+          "8efddaa1-c443-4013-9a4f-06ff21f6fb1d",
+          "c8b02ee9-1876-4e61-8266-bb07da86c2cd",
+          "8425598b-a94b-4798-8d24-058c28a353a2",
+          "8d369c52-88e7-499d-9092-6d8e9f854646",
+          "af575513-f0e1-46be-b9de-59893f1940cf",
+          "1ad3459c-c656-4455-9895-6efbf61f3858",
+          "d8b44c58-63f9-4ad7-89fc-1d66dd81dc54"
+        ],
+        "supporting_observations": [
+          {
+            "annotation_id": "d2b9587d-e46a-495c-b41c-575e7db32d95",
+            "trace_id": "6fc56ec6ff05aac834cde1b3c2575565",
+            "scenario_id": "final-hw3-20261023-082",
+            "note": "I think this bit is superfluous.",
+            "mapping_status": "AI-organized originating observation; not a binary human label"
+          },
+          {
+            "annotation_id": "cc470d28-ad1a-471d-bd16-0989f5bf74f6",
+            "trace_id": "eb7f0e1379513fabbe2d71751311c236",
+            "scenario_id": "final-hw3-20261023-115",
+            "note": "All of this is repetitive. It adds nothing beyond the first sentence.",
+            "mapping_status": "AI-organized originating observation; not a binary human label"
+          },
+          {
+            "annotation_id": "338e4e7e-415a-4bba-8c4c-675eb4469e66",
+            "trace_id": "586ec9e1f07b276247a71db495aa4657",
+            "scenario_id": "final-hw3-20261023-203",
+            "note": "This is repetitive.",
+            "mapping_status": "AI-organized originating observation; not a binary human label"
+          },
+          {
+            "annotation_id": "88ef6485-9e37-4b10-8400-910beccf8bb9",
+            "trace_id": "2fbb1d7108fe8f5a2e885582ca81ca7f",
+            "scenario_id": "final-hw3-20261023-184",
+            "note": "This is excessive information, and it's not relevant to the question.",
+            "mapping_status": "AI-organized originating observation; not a binary human label"
+          },
+          {
+            "annotation_id": "de4db9b1-e647-4f50-b10c-7cc3522c71ae",
+            "trace_id": "8cda82d708770a42b74a07b59c22a9f9",
+            "scenario_id": "final-hw3-20261023-059",
+            "note": "No reason to calculate the return window for the customer.",
+            "mapping_status": "AI-organized originating observation; not a binary human label"
+          },
+          {
+            "annotation_id": "3735d3d1-2dc9-45d6-92b5-9cb141504d1e",
+            "trace_id": "e9569f7fd4aad19dcb847a06929db226",
+            "scenario_id": "final-hw3-20261023-139",
+            "note": "This is too verbose and repetitive.",
+            "mapping_status": "AI-organized originating observation; not a binary human label"
+          },
+          {
+            "annotation_id": "8efddaa1-c443-4013-9a4f-06ff21f6fb1d",
+            "trace_id": "39c5bcaae0cec711209e66e35b526258",
+            "scenario_id": "final-hw3-20261023-112",
+            "note": "Too verbose and not necessary",
+            "mapping_status": "AI-organized originating observation; not a binary human label"
+          },
+          {
+            "annotation_id": "c8b02ee9-1876-4e61-8266-bb07da86c2cd",
+            "trace_id": "363f4134696c24976e9cc8924f140dfa",
+            "scenario_id": "final-hw3-20261023-209",
+            "note": "This is irrelevant because there was no mention of the product being opened.",
+            "mapping_status": "AI-organized originating observation; not a binary human label"
+          },
+          {
+            "annotation_id": "8425598b-a94b-4798-8d24-058c28a353a2",
+            "trace_id": "f70146b07412fe0d36bb2a9826550ac7",
+            "scenario_id": "final-hw3-20261023-058",
+            "note": "You don't need to walk the user through the mathematical calculations involved in determining the last day it can be returned.",
+            "mapping_status": "AI-organized originating observation; not a binary human label"
+          },
+          {
+            "annotation_id": "8d369c52-88e7-499d-9092-6d8e9f854646",
+            "trace_id": "363f4134696c24976e9cc8924f140dfa",
+            "scenario_id": "final-hw3-20261023-209",
+            "note": "The system doesn't need to explain the math used to calculate the deadline for returns.",
+            "mapping_status": "AI-organized originating observation; not a binary human label"
+          },
+          {
+            "annotation_id": "af575513-f0e1-46be-b9de-59893f1940cf",
+            "trace_id": "60ced1e03e1bb7dfc9f122e21de386f4",
+            "scenario_id": "final-hw3-20261023-048",
+            "note": "You don't have to explain the mathematical calculation used to arrive at the return deadline.",
+            "mapping_status": "AI-organized originating observation; not a binary human label"
+          },
+          {
+            "annotation_id": "1ad3459c-c656-4455-9895-6efbf61f3858",
+            "trace_id": "fe3e53fb1ce2a91bf88214e20400c738",
+            "scenario_id": "final-hw3-20261023-054",
+            "note": "Unnecessary mathematical calculation of return date",
+            "mapping_status": "AI-organized originating observation; not a binary human label"
+          },
+          {
+            "annotation_id": "d8b44c58-63f9-4ad7-89fc-1d66dd81dc54",
+            "trace_id": "f0e64f5ea03e8bf42baf2e8676723645",
+            "scenario_id": "final-hw3-20261023-088",
+            "note": "Excessive explanation of the mathematical calculations again",
+            "mapping_status": "AI-organized originating observation; not a binary human label"
+          }
+        ],
+        "positive_trace_ids": [],
+        "negative_trace_ids": [],
+        "revision": 2,
+        "updated_at": "2026-11-06T19:58:04.848539+00:00",
+        "source": "Proposed grouping of human observations; supporting mappings and binary labels await human confirmation.",
+        "remaining_work": "Confirm mappings, resolve requirement gaps, and establish at least three positives and three close negatives where available before finalizing.",
+        "revision_history": [
+          {
+            "revision": 1,
+            "definition": "The response includes irrelevant customer-facing facts or repeats information without helping the caller understand or act.",
+            "boundary": "Delete redundant or irrelevant content. Internal mechanisms disclosed without a customer purpose belong in unnecessary_internal_operation_disclosure; useful information worded poorly belongs in technical_or_formal_wording. Do not mark the same passage in all three solely because it is verbose.",
+            "superseded_at": "2026-11-06T19:58:04.848539+00:00"
+          }
+        ],
+        "subtypes": [
+          {
+            "name": "unnecessary_detail",
+            "definition": "Adds information that does not help the caller understand the answer or take action.",
+            "subtypes": [
+              {
+                "name": "unnecessary_return_date_calculation_walkthrough",
+                "definition": "Narrates the arithmetic used to calculate a return deadline when the caller does not need or request that derivation.",
+                "boundary": "Giving the deadline or briefly stating the applicable return window can be useful. Explaining the calculation can be appropriate when requested or needed to resolve a disputed date.",
+                "candidate_scenario_ids": [
+                  "final-hw3-20261023-058",
+                  "final-hw3-20261023-209",
+                  "final-hw3-20261023-048",
+                  "final-hw3-20261023-054",
+                  "final-hw3-20261023-088",
+                  "final-hw3-20261023-059"
+                ],
+                "review_status": "Grouping accepted; individual binary labels remain unconfirmed."
+              }
+            ]
+          },
+          {
+            "name": "repetition",
+            "definition": "Restates information already communicated without adding useful meaning.",
+            "boundary": "A new but unnecessary calculation is unnecessary detail, not repetition unless it also repeats prior content."
+          }
+        ],
+        "revision_reason": "User accepted retaining return-date calculation walkthroughs as a named subtype, distinguishing unnecessary new detail from repetition without adding a ninth top-level candidate.",
+        "acceptance": "User accepted definitions and authorized AI labeling; supporting examples are not thereby human-confirmed."
+      },
+      {
+        "name": "unnecessary_internal_operation_disclosure",
+        "status": "accepted",
+        "definition": "The assistant exposes internal approval mechanics, routing, evaluation steps, or policy-resolution procedures when that disclosure does not serve a concrete purpose for the caller, such as understanding an outcome, taking action, or setting accurate expectations.",
+        "boundary": "Distinct from technical wording: even plain wording may reveal an unnecessary mechanism. Distinct from repetition: even a short, unique statement may disclose it. Preserve honest outcome and pending-review status, uncertainty that affects the answer, and information needed to act. A requested or genuinely useful explanation of a mechanism can pass. Consider authenticated caller role; do not assume every caller is a shopper.",
+        "requirement_source": [
+          "SPEC.md RESP-7 (related)",
+          "SPEC.md ESC-1 (preserve outcome explanation)",
+          "SPEC.md RESP-10 and RESP-11 (requires clarification)"
+        ],
+        "likely_evaluator": "LLM judge",
+        "originating_annotations": [
+          "6d15fad6-ef1d-4f23-9a5b-67e90b23a95a",
+          "70eff9ac-ae92-418b-b262-3ee313f9fc2c",
+          "ad1debbd-8cd5-48ba-bae9-779d4482c6d5"
+        ],
+        "supporting_observations": [
+          {
+            "annotation_id": "6d15fad6-ef1d-4f23-9a5b-67e90b23a95a",
+            "trace_id": "c589c91959581662227a59cd7f16d60c",
+            "scenario_id": "final-hw3-20261023-094",
+            "note": "The auto-approval threshold doesn't need to be mentioned. This is excessive technical and procedural detail, and I think it's also a case where the system is providing too much transparency as to its inner workings.",
+            "mapping_status": "AI-organized originating observation; not a binary human label"
+          },
+          {
+            "annotation_id": "70eff9ac-ae92-418b-b262-3ee313f9fc2c",
+            "trace_id": "b2e1afbbd09785870f40e2f8cf7e1708",
+            "scenario_id": "final-hw3-20261023-104",
+            "note": "The refund shouldn't be processed until the item is returned. \n\nAlso, there's too much procedural detail. We don't need to explain all of the mathematical calculations required to figure out that this is above the approval threshold. The user doesn't even need to know that there's an auto-approval threshold.",
+            "mapping_status": "AI-organized originating observation; not a binary human label"
+          },
+          {
+            "annotation_id": "ad1debbd-8cd5-48ba-bae9-779d4482c6d5",
+            "trace_id": "e9569f7fd4aad19dcb847a06929db226",
+            "scenario_id": "final-hw3-20261023-139",
+            "note": "The rules regarding precedence of conflicting policies are too technical. The person doesn't need to know this unless they ask about it.",
+            "mapping_status": "AI-organized originating observation; not a binary human label"
+          }
+        ],
+        "positive_trace_ids": [],
+        "negative_trace_ids": [],
+        "revision": 1,
+        "updated_at": "2026-11-06T19:40:52.877647+00:00",
+        "source": "Proposed grouping of human observations; supporting mappings and binary labels await human confirmation.",
+        "remaining_work": "Confirm mappings, resolve requirement gaps, and establish at least three positives and three close negatives where available before finalizing.",
+        "requirement_gap": "User requested this split and customer-purpose test. Current RESP-10 explicitly includes relevant approval thresholds. Proposed refinement: disclose approval thresholds or other internal mechanisms only when requested or needed for the intended customer experience; explain pending human review without routinely enumerating the cutoff. SPEC.md has not yet been revised. Do not label threshold mentions as failures solely under the existing requirement.",
+        "acceptance": "User accepted definitions and authorized AI labeling; supporting examples are not thereby human-confirmed."
+      },
+      {
+        "name": "unsupported_policy_claim",
+        "status": "accepted",
+        "definition": "The assistant makes a policy-derived claim without retrieved evidence supporting that specific rule and its application.",
+        "boundary": "A same-topic document is insufficient. Distinguish user-specific factual assertions and unsupported explanations of past decisions. Inspect all evidence including prior turns and structured policy results, not just document-search tool names.",
+        "requirement_source": [
+          "SPEC.md RESP-1",
+          "SPEC.md RESP-9",
+          "SPEC.md RESP-11"
+        ],
+        "likely_evaluator": "LLM judge",
+        "originating_annotations": [
+          "176b4a98-a5bf-483a-9ad5-71a7a3d41b21",
+          "594b5ec4-7dac-4e18-931c-70f6018bc6ab",
+          "e42ed266-057b-46f5-84a4-914f85ff7cbd",
+          "2b7eb3da-8443-416e-9303-77bd35826e50",
+          "72dd9449-1ab4-4fcc-9479-463ee582b90d",
+          "724c11e2-1e1a-4eb0-b994-392656c79091"
+        ],
+        "supporting_observations": [
+          {
+            "annotation_id": "176b4a98-a5bf-483a-9ad5-71a7a3d41b21",
+            "trace_id": "f617bec5837b13c23b3351fa4498f5c6",
+            "scenario_id": "final-hw3-20261023-189",
+            "note": "This looks like a failure to retrieve the relevant policy document.",
+            "mapping_status": "proposed_not_binary_label"
+          },
+          {
+            "annotation_id": "594b5ec4-7dac-4e18-931c-70f6018bc6ab",
+            "trace_id": "64d915928128e7cc28ed8ef4ede17417",
+            "scenario_id": "final-hw3-20261023-050",
+            "note": "The assistant invokes privacy and security policies without retrieving supporting policy evidence",
+            "mapping_status": "proposed_not_binary_label"
+          },
+          {
+            "annotation_id": "e42ed266-057b-46f5-84a4-914f85ff7cbd",
+            "trace_id": "5c1296805109196faf0fcdff34ae84c6",
+            "scenario_id": "final-hw3-20261023-096",
+            "note": "The system's response is not grounded in a retrieved policy.",
+            "mapping_status": "proposed_not_binary_label"
+          },
+          {
+            "annotation_id": "2b7eb3da-8443-416e-9303-77bd35826e50",
+            "trace_id": "ad75c8390791bf79e46dd2c60fd5ff95",
+            "scenario_id": "final-hw3-20261023-121",
+            "note": "This sounds correct, but it should be grounded in a retreat policy.",
+            "mapping_status": "proposed_not_binary_label"
+          },
+          {
+            "annotation_id": "72dd9449-1ab4-4fcc-9479-463ee582b90d",
+            "trace_id": "3fca40479b48462e5f89a6d42ee6fe05",
+            "scenario_id": "final-hw3-20261023-182",
+            "note": "This answer doesn't appear to be grounded in a retreat-relevant policy document.",
+            "mapping_status": "proposed_not_binary_label"
+          },
+          {
+            "annotation_id": "724c11e2-1e1a-4eb0-b994-392656c79091",
+            "trace_id": "53daea77002ddd8877e41897a01d082a",
+            "scenario_id": "final-hw3-20261023-179",
+            "note": "This answer isn't grounded in any evidence.",
+            "mapping_status": "proposed_not_binary_label"
+          }
+        ],
+        "positive_trace_ids": [],
+        "negative_trace_ids": [],
+        "revision": 1,
+        "updated_at": "2026-11-06T19:40:52.877647+00:00",
+        "source": "Proposed grouping of human observations; supporting mappings and binary labels await human confirmation.",
+        "remaining_work": "Confirm mappings, resolve requirement gaps, and establish at least three positives and three close negatives where available before finalizing.",
+        "acceptance": "User accepted definitions and authorized AI labeling; supporting examples are not thereby human-confirmed."
+      },
+      {
+        "name": "unsupported_past_decision_explanation",
+        "status": "accepted",
+        "definition": "The assistant attributes a particular reason or decision-time circumstance to a past action without historical evidence supporting that explanation, including unsupported claims that a particular cause was likely.",
+        "boundary": "Current eligibility and current policy do not establish why a past request was denied. Explicitly stating that history is unavailable and discussing general possibilities without attributing a cause to the actual past decision can pass. Hedging changes certainty or severity but does not itself supply evidence.",
+        "requirement_source": [
+          "SPEC.md RESP-3",
+          "SPEC.md RESP-11"
+        ],
+        "likely_evaluator": "LLM judge",
+        "originating_annotations": [
+          "a44624de-e667-4620-a4c9-f0b1a1903d7d",
+          "b28e1d21-5d64-4b50-a910-accb5f00438d",
+          "4c570ed9-a2cc-409a-9f79-2f967bd96351",
+          "f7b314b1-802e-4a61-8fcd-aad9ce40d0da",
+          "8c2bbb73-ed39-458b-8420-8524dcc3b6e1"
+        ],
+        "supporting_observations": [
+          {
+            "annotation_id": "a44624de-e667-4620-a4c9-f0b1a1903d7d",
+            "trace_id": "b141116f2d0d238cc3cef5d0abaa8828",
+            "scenario_id": "final-hw3-20261023-147",
+            "note": "The system is making an assumption about what date it was when the refund was requested. There doesn't appear to be any timestamp recording of when the denial was made, so the system shouldn't try to answer this question.",
+            "mapping_status": "proposed_not_binary_label"
+          },
+          {
+            "annotation_id": "b28e1d21-5d64-4b50-a910-accb5f00438d",
+            "trace_id": "5b3c818bfb6e5c65839f46f3c21f5924",
+            "scenario_id": "final-hw3-20261023-148",
+            "note": "The system assumes that the refund was requested today, but there is nothing in the user's assertion to suggest that.",
+            "mapping_status": "proposed_not_binary_label"
+          },
+          {
+            "annotation_id": "4c570ed9-a2cc-409a-9f79-2f967bd96351",
+            "trace_id": "5068668faf3d7ed938611bfb8b01b7b4",
+            "scenario_id": "final-hw3-20261023-146",
+            "note": "Again, we have a case where the system is stating the reason for something that happened in the past without anything to support the assertion that it's making. There's no historical record that it's referencing.",
+            "mapping_status": "proposed_not_binary_label"
+          },
+          {
+            "annotation_id": "f7b314b1-802e-4a61-8fcd-aad9ce40d0da",
+            "trace_id": "507355b1a02f967e64ce7e39b82140f9",
+            "scenario_id": "final-hw3-20261023-143",
+            "note": "There is no historical record of why a request may have been refused in the past, so this assertion is not grounded in evidence.",
+            "mapping_status": "proposed_not_binary_label"
+          },
+          {
+            "annotation_id": "8c2bbb73-ed39-458b-8420-8524dcc3b6e1",
+            "trace_id": "b578bf5074a4f254b8285ae7ea39070f",
+            "scenario_id": "final-hw3-20261023-142",
+            "note": "This is still a problem because the assertion is not grounded in evidence. However, it's slightly better than some of the other failure modes because it's making a speculative, probabilistic statement, as opposed to stating as a concrete fact the reason why the order was declined. This is less severe than the others.",
+            "mapping_status": "proposed_not_binary_label"
+          }
+        ],
+        "positive_trace_ids": [],
+        "negative_trace_ids": [],
+        "revision": 1,
+        "updated_at": "2026-11-06T19:40:52.877647+00:00",
+        "source": "Proposed grouping of human observations; supporting mappings and binary labels await human confirmation.",
+        "remaining_work": "Confirm mappings, resolve requirement gaps, and establish at least three positives and three close negatives where available before finalizing.",
+        "acceptance": "User accepted definitions and authorized AI labeling; supporting examples are not thereby human-confirmed."
+      },
+      {
+        "name": "unclear_or_unsupported_return_deadline",
+        "status": "accepted",
+        "definition": "The assistant presents a return deadline without supported clarity about the applicable cutoff or required action, or invents the meaning of an unspecified deadline.",
+        "boundary": "Do not penalize explicit disclosure that policy does not say whether request, shipment, or receipt is required, accompanied by appropriate escalation. Missing policy semantics are a specification gap, not permission to invent them. Calculations or irrelevant explanation alone belong in unnecessary_detail_or_repetition.",
+        "requirement_source": [
+          "SPEC.md RESP-3",
+          "SPEC.md RESP-7",
+          "SPEC.md ESC-4"
+        ],
+        "likely_evaluator": "LLM judge",
+        "originating_annotations": [
+          "35adb0eb-8509-40a6-8931-16f127e08c0d",
+          "e39ffb8a-718e-49df-9c24-f3ff0a614f1a",
+          "6100beec-4826-4d85-b618-69a31810c680",
+          "29fa1a5f-ec9a-4206-a405-7297055cde80"
+        ],
+        "supporting_observations": [
+          {
+            "annotation_id": "35adb0eb-8509-40a6-8931-16f127e08c0d",
+            "trace_id": "40eca4b7fdcbb26c7c0776a0d0526490",
+            "scenario_id": "final-hw3-20261023-206",
+            "note": "This is ambiguous as to whether the end date is inclusive or exclusive.",
+            "mapping_status": "proposed_not_binary_label"
+          },
+          {
+            "annotation_id": "e39ffb8a-718e-49df-9c24-f3ff0a614f1a",
+            "trace_id": "3cb5d2d906c349f7f951c7c1d8ed39b6",
+            "scenario_id": "final-hw3-20261023-155",
+            "note": "This is another case where the phrasing is ambiguous as to whether the deadline is inclusive or exclusive.",
+            "mapping_status": "proposed_not_binary_label"
+          },
+          {
+            "annotation_id": "6100beec-4826-4d85-b618-69a31810c680",
+            "trace_id": "8d8369cb7de609a7b8ed22b98461a029",
+            "scenario_id": "final-hw3-20261023-061",
+            "note": "The phrasing isn't clear whether the date is inclusive or exclusive, or exactly what specific action needs to happen by the date.",
+            "mapping_status": "proposed_not_binary_label"
+          },
+          {
+            "annotation_id": "29fa1a5f-ec9a-4206-a405-7297055cde80",
+            "trace_id": "da93d815c67168f7b5c243e9be60225e",
+            "scenario_id": "final-hw3-20261023-056",
+            "note": "Again, it's not clear what needs to happen by this date: whether the buyer needs to ship it back or whether the seller needs to receive it.",
+            "mapping_status": "proposed_not_binary_label"
+          }
+        ],
+        "positive_trace_ids": [],
+        "negative_trace_ids": [],
+        "revision": 1,
+        "updated_at": "2026-11-06T19:40:52.877647+00:00",
+        "source": "Proposed grouping of human observations; supporting mappings and binary labels await human confirmation.",
+        "remaining_work": "Confirm mappings, resolve requirement gaps, and establish at least three positives and three close negatives where available before finalizing.",
+        "requirement_gap": "Resolve inclusive/exclusive and request/shipment/receipt semantics before finalizing. Notes on 061 and 056 need re-review: those responses explicitly acknowledge missing policy semantics. 155 separately makes an assumption about deciding or shipping that needs confirmation.",
+        "acceptance": "User accepted definitions and authorized AI labeling; supporting examples are not thereby human-confirmed."
+      }
+    ],
+    "consolidation": {
+      "updated_at": "2026-11-06T19:40:52.877647+00:00",
+      "status": "definitions_accepted_ai_labeling_authorized",
+      "revision_reason": "Consolidate human notes; split unnecessary internal-operation disclosure from wording and repetition at user request.",
+      "close_negative_candidates": [
+        {
+          "scenario_id": "final-hw3-20261023-244",
+          "reason": "Human explicitly accepts explaining refund issuance versus customer settlement because it helps expectations.",
+          "mapping_status": "proposed"
+        }
+      ],
+      "preservation": "Original annotations and binary labels unchanged; no candidate finalized."
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "status": "full_tool_tracing_verified",
+  "skill": "https://github.com/raindrop-ai/workshop/blob/main/skills/instrument-agent/SKILL.md",
+  "workshop_version": "0.1.24",
+  "sdk_versions": {
+    "raindrop-openai-agents": "0.0.12",
+    "raindrop-ai": "0.0.75"
+  },
+  "run_url": "http://localhost:5899/runs/300fe5514768a0215ae876e21a4c3119",
+  "model": "gpt-4o-mini-2024-07-18",
+  "input": "What is the Cartwheel return policy? Please retrieve the policy before answering.",
+  "verification": "Three approved read-only policy turns: each has three model spans and two tool spans. Langfuse returned all three matching trace IDs with tool inputs/outputs. Workshop UI shows arguments and results after adding legacy tool aliases to the export copy. Existing tool spans were refreshed from their recorded Langfuse payloads without extra model calls.",
+  "limitation": "Final compatibility mapping verified by offline copy-isolation test and local re-export of the observed calls, not a fourth live model run. Historical runs are not imported. Optional homework review remains incomplete.",
+  "homework_optional_review_completed": false,
+  "cloud_export_enabled": false,
+  "transport": "standard OpenTelemetry OTLP/HTTP protobuf, shared existing provider",
+  "run_urls": [
+    "http://localhost:5899/runs/81e222d56880694e4cb090724fac809d",
+    "http://localhost:5899/runs/2c20dd3a528cd49caeb694e2a26d35d2",
+    "http://localhost:5899/runs/5ebdab94177a69235df77fed0acc374d"
+  ],
+  "offline_tests": "27 passed: tests/test_workshop.py and tests/test_cli.py"
+}

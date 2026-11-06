@@ -25,6 +25,7 @@ dev = [
 ]
 
 [project.optional-dependencies]
+workshop = ["raindrop-openai-agents==0.0.12", "raindrop-ai==0.0.75"]
 optimization = [
     "gepa==0.1.4",
 ]
