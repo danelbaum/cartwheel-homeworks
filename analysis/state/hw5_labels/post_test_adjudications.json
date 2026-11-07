@@ -1,0 +1,19 @@
+{
+  "policy": "Post-test review only; original test labels and metrics preserved.",
+  "decisions": [
+    {
+      "scenario": "180",
+      "trace_id": "5bc134ddd8eebc8fce9d817dac39e84e",
+      "verdict": "Pass",
+      "decision": "keep",
+      "reason": "Processing-time context is needed to answer the question."
+    },
+    {
+      "scenario": "082",
+      "trace_id": "6fc56ec6ff05aac834cde1b3c2575565",
+      "verdict": "Pass",
+      "decision": "change",
+      "reason": "User considers the response direct."
+    }
+  ]
+}

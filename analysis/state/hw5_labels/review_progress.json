@@ -1,0 +1,258 @@
+{
+  "mode": "unnecessary_detail_or_repetition",
+  "boundary_version": "chat-approved-explicit-objective-v4",
+  "pending_review": [],
+  "minimum_per_class": 30,
+  "note": "Carryover labels authorized by user. Keep original human evidence and inferred mapping distinct from fresh confirmations. Check related-scenario duplication before final counts and split.",
+  "boundary_questions": [
+    {
+      "scenario_id": "final-hw3-20261023-197",
+      "note": "Human Pass despite extra refund-deduction detail. Preserve human label; do not generalize to every unrequested addition."
+    }
+  ],
+  "awaiting_clarification": [],
+  "deferred_review": [],
+  "excluded_review": [
+    {
+      "trace_id": "191b16412f70ea723d545df556ed76d7",
+      "scenario_id": "final-hw3-20261023-210",
+      "reason": "User considers scenario duplicative; exclude pending duplicate audit.",
+      "source": "human"
+    },
+    {
+      "trace_id": "cc46711a062ccbf8d549421c9b17bd58",
+      "scenario_id": "final-hw3-20261023-066",
+      "reason": "User finds scenario weird and explicitly does not want it included.",
+      "source": "human"
+    }
+  ],
+  "stage": "final_test_complete",
+  "adjusted_counts": {
+    "Fail": 37,
+    "Pass": 30
+  },
+  "next_step": "Assess final judge using held-out results; no further prompt tuning on test results. Submission and recording remain pending.",
+  "selected_training_examples": [
+    "7be871be00354d72ea3e6a7429b36122",
+    "cc57fa5e59c5e4f6b7c81a27e3c1f2cc",
+    "aebec0b199ab7fd6cd245132e4fa60ab",
+    "f8a8b9eabb43b27339f891a155d6bbec"
+  ],
+  "prompt_path": "analysis/prompts/unnecessary_detail_or_repetition-v0.txt",
+  "judge_id": "unnecessary_detail_or_repetition-v0",
+  "development_metrics": {
+    "judge_id": "unnecessary_detail_or_repetition-v0",
+    "split": "dev",
+    "tpr": 0.6,
+    "tnr": 0.7368,
+    "tpr_interval": [
+      0.2307,
+      0.8824
+    ],
+    "tnr_interval": [
+      0.5121,
+      0.8819
+    ],
+    "agreement": 0.7083,
+    "tp": 3,
+    "fn": 2,
+    "tn": 14,
+    "fp": 5,
+    "n": 24,
+    "disagreements": [
+      "60ced1e03e1bb7dfc9f122e21de386f4",
+      "6c39ab1b1e665d4c7258541d3a839024",
+      "cb6308f0ebebe1f007ee89f41014ac79",
+      "dc7b6a2636e1d90dbe892f1940c7401a",
+      "e53ece7609a7d846c4a47f50429ffaac",
+      "e9569f7fd4aad19dcb847a06929db226",
+      "fb11daec6c245b13ff53a9de79c7841e"
+    ]
+  },
+  "pending_disagreement_review": [],
+  "disagreement_reviews": [
+    {
+      "trace_id": "54b84b1943a930554564eeac40cab57e",
+      "decision": "change_label",
+      "reason": "User changes 084 from Pass to Fail: stating that no additional store-specific policies or restocking fees apply was not asked for.",
+      "reviewed_at": "2026-11-07T00:54:21.383042+00:00"
+    },
+    {
+      "trace_id": "60ced1e03e1bb7dfc9f122e21de386f4",
+      "decision": "keep_label",
+      "reason": "User retains Fail for 048: nobody asked about restocking fees; this is unnecessary to answer whether the item can be returned.",
+      "reviewed_at": "2026-11-07T00:54:21.383042+00:00"
+    },
+    {
+      "trace_id": "6c39ab1b1e665d4c7258541d3a839024",
+      "decision": "keep_label_judge_error",
+      "reason": "User retains Fail: the second sentence repeats the first; judge Pass is incorrect.",
+      "reviewed_at": "2026-11-07T00:56:00.691548+00:00"
+    },
+    {
+      "trace_id": "7baf879ab8c900e18e813a2211ac2323",
+      "decision": "keep_label_judge_error",
+      "reason": "User retains Pass: the qualification \"which seems to be an error\" is acceptable.",
+      "reviewed_at": "2026-11-07T00:56:00.691548+00:00"
+    },
+    {
+      "trace_id": "833bb12f119756cac64c21c41089efd9",
+      "decision": "keep_label_judge_error",
+      "reason": "User retains Pass for scenario 170 after reviewing the judge critique.",
+      "reviewed_at": "2026-11-07T01:09:46.462159+00:00"
+    },
+    {
+      "trace_id": "93c127844239c36538bec6fe1bd3f214",
+      "decision": "change_label",
+      "reason": "User agrees with judge Fail for scenario 024: the shipping-provider suggestion anticipates an additional unrequested need.",
+      "reviewed_at": "2026-11-07T01:09:46.462159+00:00"
+    },
+    {
+      "trace_id": "b2bb96d9e3dbe8968bf70402891540d5",
+      "decision": "keep_label_judge_error",
+      "reason": "User retains Pass for 017 because the user said no payment info right now.",
+      "reviewed_at": "2026-11-07T01:12:12.136992+00:00"
+    },
+    {
+      "trace_id": "c8903fd70516351fb3d1120f449c8192",
+      "decision": "change_label",
+      "reason": "User changes 120 to Fail because the second sentence repeats the first.",
+      "reviewed_at": "2026-11-07T01:12:12.136992+00:00"
+    },
+    {
+      "trace_id": "dc7b6a2636e1d90dbe892f1940c7401a",
+      "decision": "keep_label_judge_error",
+      "reason": "User retains Pass for 003 because the user explicitly asked about sales.",
+      "reviewed_at": "2026-11-07T01:17:12.528026+00:00"
+    },
+    {
+      "trace_id": "e53ece7609a7d846c4a47f50429ffaac",
+      "decision": "keep_label_judge_error",
+      "reason": "User retains Fail for 169 because the response could just say no and give the deadline.",
+      "reviewed_at": "2026-11-07T01:17:12.528107+00:00"
+    },
+    {
+      "trace_id": "e9569f7fd4aad19dcb847a06929db226",
+      "decision": "keep_label_judge_error",
+      "reason": "User retains Fail for 139 because it repeats the return policy.",
+      "reviewed_at": "2026-11-07T01:18:29.489494+00:00"
+    },
+    {
+      "trace_id": "fb11daec6c245b13ff53a9de79c7841e",
+      "decision": "keep_label_judge_error",
+      "reason": "User retains Pass for 241 because the user explicitly asked about the bank.",
+      "reviewed_at": "2026-11-07T01:18:29.490190+00:00"
+    }
+  ],
+  "draft_judge_id": "unnecessary_detail_or_repetition-v2",
+  "draft_prompt_path": "analysis/prompts/unnecessary_detail_or_repetition-v2.txt",
+  "draft_status": "development_evaluated",
+  "v2_development_metrics": {
+    "judge_id": "unnecessary_detail_or_repetition-v2",
+    "split": "dev",
+    "tpr": 0.8,
+    "tnr": 0.8947,
+    "tpr_interval": [
+      0.3755,
+      0.9638
+    ],
+    "tnr_interval": [
+      0.6861,
+      0.9706
+    ],
+    "agreement": 0.875,
+    "tp": 4,
+    "fn": 1,
+    "tn": 17,
+    "fp": 2,
+    "n": 24,
+    "disagreements": [
+      "60ced1e03e1bb7dfc9f122e21de386f4",
+      "e53ece7609a7d846c4a47f50429ffaac",
+      "fb11daec6c245b13ff53a9de79c7841e"
+    ]
+  },
+  "v2_disagreement_reviews": [
+    {
+      "trace_id": "60ced1e03e1bb7dfc9f122e21de386f4",
+      "decision": "keep_label_judge_error",
+      "reason": "User retains Fail for 048 because the restocking fee was not asked for.",
+      "reviewed_at": "2026-11-07T01:36:04.805441+00:00"
+    },
+    {
+      "trace_id": "7baf879ab8c900e18e813a2211ac2323",
+      "decision": "change_label",
+      "reason": "User changes 224 to Fail because the offer to report the issue is unnecessary.",
+      "reviewed_at": "2026-11-07T01:36:04.805441+00:00"
+    },
+    {
+      "trace_id": "833bb12f119756cac64c21c41089efd9",
+      "decision": "change_label",
+      "reason": "User changes 170 to Fail because it repeats that the two times should be added and offers an unnecessary lookup.",
+      "reviewed_at": "2026-11-07T01:37:12.118987+00:00"
+    },
+    {
+      "trace_id": "b2bb96d9e3dbe8968bf70402891540d5",
+      "decision": "change_label",
+      "reason": "User changes 017 to Fail because the suggestion to add the item to the cart is unnecessary.",
+      "reviewed_at": "2026-11-07T01:37:12.118987+00:00"
+    },
+    {
+      "trace_id": "cb6308f0ebebe1f007ee89f41014ac79",
+      "decision": "change_label",
+      "reason": "User changes 177 to Fail because the tracking information was not asked for.",
+      "reviewed_at": "2026-11-07T01:37:58.352967+00:00"
+    },
+    {
+      "trace_id": "e53ece7609a7d846c4a47f50429ffaac",
+      "decision": "keep_label_judge_error",
+      "reason": "User retains Fail for 169 because it could just say no and give the deadline.",
+      "reviewed_at": "2026-11-07T01:37:58.352967+00:00"
+    },
+    {
+      "trace_id": "fb11daec6c245b13ff53a9de79c7841e",
+      "decision": "keep_label_judge_error",
+      "reason": "User retains Pass for 241: bank-processing context is critical to understanding the answer to the explicit bank-receipt question.",
+      "reviewed_at": "2026-11-07T01:40:38.322393+00:00"
+    }
+  ],
+  "pending_v2_disagreement_review": [],
+  "selected_final_judge_id": "unnecessary_detail_or_repetition-v2",
+  "test_metrics": {
+    "judge_id": "unnecessary_detail_or_repetition-v2",
+    "split": "test",
+    "tpr": 0.4615,
+    "tnr": 0.75,
+    "tpr_interval": [
+      0.2321,
+      0.7086
+    ],
+    "tnr_interval": [
+      0.4677,
+      0.9111
+    ],
+    "agreement": 0.6,
+    "tp": 6,
+    "fn": 7,
+    "tn": 9,
+    "fp": 3,
+    "n": 25,
+    "disagreements": [
+      "5bc134ddd8eebc8fce9d817dac39e84e",
+      "6fc56ec6ff05aac834cde1b3c2575565",
+      "8017d7693d6a88d02c2eb4d04dab7028",
+      "82a5fe88a607ed98624e97200c06b65f",
+      "83a1596584092e2984734f688cdf5d29",
+      "9b34fe017bb1901c6865b2a4874aad10",
+      "a2af1375e691b7d0d837eed79d08804e",
+      "d70ccf5f90e302c4694cecf5aa5d1370",
+      "e9a230b8bb212023650581c9e1453490",
+      "fe5fbbcf4f5d8f3040c22d1d0a864827"
+    ]
+  },
+  "pending_test_disagreement_review": [
+    "5bc134ddd8eebc8fce9d817dac39e84e",
+    "6fc56ec6ff05aac834cde1b3c2575565"
+  ],
+  "test_review_policy": "Post-test review; preserve original test metrics and frozen prompt. Record any adjudications separately."
+}

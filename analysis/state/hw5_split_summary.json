@@ -1,0 +1,23 @@
+{
+  "mode": "unnecessary_detail_or_repetition",
+  "seed": 7,
+  "fractions": [
+    0.2,
+    0.4,
+    0.4
+  ],
+  "counts": {
+    "train": {
+      "Pass": 6,
+      "Fail": 6
+    },
+    "dev": {
+      "Fail": 12,
+      "Pass": 12
+    },
+    "test": {
+      "Pass": 13,
+      "Fail": 12
+    }
+  }
+}

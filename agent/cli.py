@@ -102,10 +102,18 @@ async def chat(
     defenses: bool = False,
     debug: bool = False,
     tracing: bool = False,
+    workshop: bool = False,
 ) -> None:
     agent = build_agent(ctx, model=model, defenses=defenses)
     # main() enables callbacks for Langfuse or explicit OpenAI tracing.
-    run_config = RunConfig(tracing_disabled=not tracing)
+    workshop_client = None
+    if workshop:
+        from observability.workshop import setup_workshop
+        if not tracing:
+            from agents.tracing import set_trace_processors
+            set_trace_processors([])  # No implicit hosted export in local-only mode.
+        workshop_client = setup_workshop(ctx.user_id)
+    run_config = RunConfig(tracing_disabled=not (tracing or workshop))
     session = SQLiteSession(
         f"cli-{ctx.role}-{ctx.user_id}-{int(time.time())}", str(SESSIONS_DB)
     )
@@ -130,14 +138,27 @@ async def chat(
                 span.set_attribute("cartwheel.user_role", ctx.role)
                 span.set_attribute("cartwheel.user_id", str(ctx.user_id))
                 span.set_attribute("cartwheel.prompt_version", version)
-            result = await Runner.run(
-                agent,
-                line,
-                session=session,
-                context=ctx,
-                max_turns=MAX_TURNS,
-                run_config=run_config,
-            )
+            # Scope content capture to an explicitly requested Workshop run.
+            # Both local viewers receive the same model/tool payloads.
+            from opentelemetry import context as otel_context
+            token = otel_context.attach(otel_context.set_value(
+                "override_enable_content_tracing", True
+            )) if workshop else None
+            try:
+                result = await Runner.run(
+                    agent,
+                    line,
+                    session=session,
+                    context=ctx,
+                    max_turns=MAX_TURNS,
+                    run_config=run_config,
+                )
+            finally:
+                if token is not None:
+                    otel_context.detach(token)
+
+        if workshop_client is not None:
+            workshop_client.flush()
 
         # ------------------------------------------------------------------
         # Module 4 pause and resume code (Homework 8, Part D). With defenses on,
@@ -188,6 +209,8 @@ def main() -> None:
         default=None,
         help="gpt-4o-mini | claude-haiku-4-5 | glm-5.2 | ... (default: $CARTWHEEL_MODEL or gpt-4o-mini)",
     )
+    parser.add_argument('--workshop', action='store_true',
+                        help='capture local Workshop model/tool spans on port 5899')
     tracing_options = parser.add_mutually_exclusive_group()
     tracing_options.add_argument(
         "--trace", action="store_true", help="ship spans to Langfuse (Lecture 2)"
@@ -207,6 +230,8 @@ def main() -> None:
         help="print each tool call's name, arguments, and result",
     )
     args = parser.parse_args()
+    if args.workshop and args.trace_openai:
+        parser.error("--workshop supports --trace (Langfuse) or local-only mode, not --trace-openai")
 
     load_env()
     tracing = False
@@ -219,7 +244,7 @@ def main() -> None:
             parser.error(str(exc))
     ctx = resolve_auth(args.role, args.user)
     asyncio.run(
-        chat(ctx, args.model, defenses=args.defenses, debug=args.debug, tracing=tracing)
+        chat(ctx, args.model, defenses=args.defenses, debug=args.debug, tracing=tracing, workshop=args.workshop)
     )
 
 

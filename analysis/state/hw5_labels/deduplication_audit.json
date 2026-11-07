@@ -1,0 +1,226 @@
+{
+  "status": "complete_for_current_labeled_set",
+  "method": "Manual semantic comparison of all 66 labeled requests, scenario tuples, relevant facts, outputs and available conversation context. Group paraphrases with equivalent task and decision-relevant conditions. Do not merge solely by topic.",
+  "representative_rule": "Lowest scenario number within each group, independent of label or response quality.",
+  "raw_counts": {
+    "Fail": 30,
+    "Pass": 36
+  },
+  "adjusted_counts": {
+    "Fail": 21,
+    "Pass": 24
+  },
+  "excluded_counts": {
+    "Fail": 9,
+    "Pass": 12
+  },
+  "unique_trace_ids": 66,
+  "unique_sessions": 66,
+  "repeated_sessions": [],
+  "groups": [
+    {
+      "group_id": "variants-021",
+      "scenario_numbers": [
+        "021",
+        "025",
+        "029"
+      ],
+      "representative_scenario": "021",
+      "reason": "Current status of an already-delivered order; only caller wording, role and record values change."
+    },
+    {
+      "group_id": "variants-043",
+      "scenario_numbers": [
+        "043",
+        "131",
+        "138"
+      ],
+      "representative_scenario": "043",
+      "reason": "Verify seller for the same order 8003 and product; paraphrased seller-mismatch question."
+    },
+    {
+      "group_id": "variants-129",
+      "scenario_numbers": [
+        "129",
+        "130",
+        "134",
+        "137"
+      ],
+      "representative_scenario": "129",
+      "reason": "Verify whether an already-cancelled order was cancelled; names, IDs and wording vary."
+    },
+    {
+      "group_id": "variants-052",
+      "scenario_numbers": [
+        "052",
+        "054",
+        "058",
+        "059"
+      ],
+      "representative_scenario": "052",
+      "reason": "Current eligibility for an authorized, delivered order within the same 30-day platform window, without extra requested information."
+    },
+    {
+      "group_id": "variants-062",
+      "scenario_numbers": [
+        "062",
+        "065",
+        "071",
+        "073"
+      ],
+      "representative_scenario": "062",
+      "reason": "Return address and label request with no order ID and no supplied return-address instructions; store names and wording vary."
+    },
+    {
+      "group_id": "variants-170",
+      "scenario_numbers": [
+        "170",
+        "173"
+      ],
+      "representative_scenario": "170",
+      "reason": "Ask whether handling and delivery time are separate; same policy and requested explanation."
+    },
+    {
+      "group_id": "variants-180",
+      "scenario_numbers": [
+        "180",
+        "184",
+        "185",
+        "188"
+      ],
+      "representative_scenario": "180",
+      "reason": "General destination and arrival time of refunds; same platform policy, with no concrete refund lookup requested."
+    },
+    {
+      "group_id": "variants-198",
+      "scenario_numbers": [
+        "198",
+        "200",
+        "201"
+      ],
+      "representative_scenario": "198",
+      "reason": "General impact of customer refunds on next merchant payout; same policy question."
+    },
+    {
+      "group_id": "variants-209",
+      "scenario_numbers": [
+        "209",
+        "211"
+      ],
+      "representative_scenario": "209",
+      "reason": "Explore dissatisfaction options for eligible apparel returns under the same 30-day policy and opened-item restocking fee."
+    },
+    {
+      "group_id": "variants-241",
+      "scenario_numbers": [
+        "241",
+        "245"
+      ],
+      "representative_scenario": "241",
+      "reason": "Verify bank receipt of a recorded refund; same bank-visibility limitation."
+    }
+  ],
+  "retained_distinctions": [
+    "Store-specific versus default return window; restocking-fee versus no-fee conditions.",
+    "Permission denial based on shopper ownership versus merchant store scope.",
+    "Additional explicit tasks, such as tracking information or explaining a prior denial.",
+    "Action requests versus information requests; partial returns versus full-item returns.",
+    "Refund amount requiring approval versus small issued refund; cutoff-day refund request versus non-boundary request.",
+    "Follow-up turns with different objectives, kept as one record per conversation."
+  ],
+  "limitations": "Semantic duplicate decisions are conservative judgments, not a statistical proof of independence. Human labels are preserved; this audit does not re-adjudicate them. New cases must be checked against retained families.",
+  "updated_at": "2026-11-07T00:20:42.136210+00:00",
+  "subsequent_reviewed_additions": [
+    {
+      "scenario": "161",
+      "verdict": "Fail",
+      "reason": "Store-wide policy comparison versus specific-order eligibility."
+    },
+    {
+      "scenario": "151",
+      "verdict": "Fail",
+      "reason": "Future wait crosses still-open cutoff; distinct from already-expired options follow-up."
+    },
+    {
+      "scenario": "003",
+      "verdict": "Pass",
+      "reason": "Budget search plus explicit promotion question."
+    },
+    {
+      "scenario": "108",
+      "verdict": "Pass",
+      "reason": "Execution of permitted cancellation versus denial or past-action lookup."
+    },
+    {
+      "scenario": "127",
+      "verdict": "Fail",
+      "reason": "Options following shipped-order cancellation denial, before delivery and return-window start."
+    },
+    {
+      "scenario": "224",
+      "verdict": "Pass",
+      "reason": "Price and discount request with erroneous catalog price."
+    },
+    {
+      "scenario": "051",
+      "verdict": "Fail",
+      "reason": "Eligibility plus explicit policy-source question."
+    },
+    {
+      "scenario": "234",
+      "verdict": "Pass",
+      "reason": "Own-account email guidance without support-ticket request."
+    },
+    {
+      "scenario": "098",
+      "verdict": "Pass",
+      "reason": "Refund execution plus destination, timing and bank-verification questions."
+    },
+    {
+      "scenario": "169",
+      "verdict": "Fail",
+      "reason": "Current eligibility after expiry rather than future wait or past-denial explanation."
+    },
+    {
+      "scenario": "018",
+      "verdict": "Pass",
+      "reason": "Catalog-title verification plus purchase action request."
+    },
+    {
+      "scenario": "163",
+      "verdict": "Pass",
+      "reason": "Store policy comparison with scope-denied access and store override."
+    },
+    {
+      "scenario": "089",
+      "verdict": "Fail",
+      "reason": "Return and full-refund action under extended store window."
+    },
+    {
+      "scenario": "225",
+      "verdict": "Fail",
+      "reason": "Title verification plus discount request, rather than purchase."
+    },
+    {
+      "scenario": "166",
+      "verdict": "Fail",
+      "reason": "Cutoff-day eligibility and explicit current-window request."
+    },
+    {
+      "scenario": "229",
+      "verdict": "Fail",
+      "reason": "Explicit escalation instruction for recurring customer dispute."
+    }
+  ],
+  "current_adjusted_counts": {
+    "Fail": 30,
+    "Pass": 31
+  },
+  "final_integrity_checks": {
+    "unique_retained_trace_ids": 61,
+    "unique_retained_sessions": 61,
+    "unique_retained_groups": 61,
+    "all_traces_available": true,
+    "label_encoding_consistent": true
+  }
+}

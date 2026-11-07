@@ -1,0 +1,25 @@
+{
+  "judge_id": "unnecessary_detail_or_repetition-v2",
+  "split": "dev",
+  "tpr": 0.8,
+  "tnr": 0.8947,
+  "tpr_interval": [
+    0.3755,
+    0.9638
+  ],
+  "tnr_interval": [
+    0.6861,
+    0.9706
+  ],
+  "agreement": 0.875,
+  "tp": 4,
+  "fn": 1,
+  "tn": 17,
+  "fp": 2,
+  "n": 24,
+  "disagreements": [
+    "60ced1e03e1bb7dfc9f122e21de386f4",
+    "e53ece7609a7d846c4a47f50429ffaac",
+    "fb11daec6c245b13ff53a9de79c7841e"
+  ]
+}

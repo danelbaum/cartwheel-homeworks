@@ -137,3 +137,30 @@ def test_label_retry_has_no_duplicate_local_revision(workspace):
     records = s.read_jsonl(s.STATE / 'labels/example_mode.jsonl')
     assert len(records) == 1
     assert records[0]['sync'] == 'synced'
+
+
+def test_caller_context_identity_matching(tmp_path, monkeypatch):
+    folder = tmp_path / 'scenarios'
+    folder.mkdir()
+    (folder / 'support_scenarios.jsonl').write_text(json.dumps({
+        'id': 'example', 'grounding': {
+            'authenticated_user': {'id': 9001, 'role': 'merchant', 'name': 'Maya Johnson', 'store_id': 1},
+            'stores': [{'id': 1, 'name': 'Blue Heron Ceramics'}, {'id': 2, 'name': 'Other store'}]}})+'\n')
+    monkeypatch.setattr(s, 'ROOT', tmp_path)
+    trace = dict(scenario_id='example', user_id='9001', role='merchant', store_id='1', user_name=None)
+    c = s.caller_context(trace)
+    assert (c['name'], c['store_name'], c['supplemented']) == ('Maya Johnson', 'Blue Heron Ceramics', True)
+    assert s.caller_context({**trace, 'user_id': '9002'})['name'] is None
+    assert s.caller_context({**trace, 'store_id': '2'})['store_name'] is None
+    assert s.caller_context({**trace, 'role': 'shopper'})['name'] is None
+    assert s.caller_context({**trace, 'user_name': 'Recorded name'})['name'] == 'Recorded name'
+
+
+def test_ai_assessments_are_separate_from_human_reviews(workspace):
+    trace, writes = workspace
+    s.write_json(s.STATE / 'review_app/ai_assessments.json', {'labels': [{'trace_id': trace['id'], 'mode': 'example', 'label': 1, 'source': 'ai'}]})
+    payload = s.payload()
+    assert len(payload['ai_assessments']['labels']) == 1
+    assert payload['labels'] == []
+    assert payload['annotations'] == []
+    assert not writes

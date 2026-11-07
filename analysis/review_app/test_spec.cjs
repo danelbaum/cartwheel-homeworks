@@ -1,0 +1,26 @@
+const {readFileSync}=require('node:fs');
+const vm=require('node:vm');
+const assert=require('node:assert/strict');
+const app=readFileSync('analysis/review_app/app.js','utf8');
+const ctx={};vm.createContext(ctx);
+vm.runInContext(app.slice(app.indexOf('function relevantSpec('),app.indexOf('function renderSpec()')),ctx);
+const spec=readFileSync('SPEC.md','utf8');
+const trace=(text,tools=[],role='shopper')=>[{role,blocks:[{role:'user',text}],tools:tools.map(name=>({name,output:{ok:true}}))}];
+const select=(...args)=>ctx.relevantSpec(spec,trace(...args));
+const status=select('Where is my order?',['get_order']);
+assert(status.some(x=>x.id==='RESP-6'));
+assert(!status.some(x=>x.id==='RESP-9'));
+assert(!status.some(x=>x.id==='Return-policy resolution'));
+const general=select('Where do you send my refunds and why do they take so long to appear in my account?');
+assert(general.some(x=>x.id==='RESP-1'));
+assert(!general.some(x=>x.id==='RESP-9'||x.id==='AUTH-1'||x.id==='ESC-2'));
+const refund=select('Can I return this for a refund?');
+assert(refund.some(x=>x.id==='RESP-9'));// Missing tool calls must not hide expected requirements.
+assert(refund.some(x=>x.id==='Return-policy resolution'&&x.text.includes('Deadline semantics')));
+assert(select('Refund my order').some(x=>x.id==='AUTH-1'&&x.text.includes('| Capability |')));
+assert(!refund.some(x=>x.id==='RESP-6'));
+assert(select('Change my account email').some(x=>x.id==='ESC-2'));
+assert(select('Tell me about this item',['search_products'],'merchant').some(x=>x.id==='search_products'&&x.text.includes('On failure')));
+assert(!select('Tell me about this item',[],'merchant').some(x=>x.id==='RESP-10'));
+for(const x of refund) assert(spec.includes(x.text),`Excerpt altered: ${x.id}`);
+console.log('Specification selection checks passed: status, refunds without tools, account changes, roles, tool contracts, verbatim excerpts.');

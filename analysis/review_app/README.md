@@ -61,13 +61,9 @@ These views poll every five seconds. No model is called by the interface.
 
 ## Current scope and next work
 
-This is the working review interface, not a completed homework submission.
-The 259-trace cohort is available for browsing, but it has not been assigned to
-HW4's four disjoint sampling batches. The progress page reads the sample manifest
-when created. Sample selection/cluster map, taxonomy construction, report counts,
-and the student's 100-trace review remain future work. The Workshop part is optional.
-The policy pane lists retrieval calls; it does not infer which policy titles were
-actually cited. The specification pane is searchable, without AI relevance ranking.
+This is the working HW4 review interface. The sample manifest contains four disjoint batches: initial (30), quantity (30), depth (25), and final uniform (15). Human review progress is derived from saved annotations; selected traces and AI assessments are not counted as human reviews. Open `/?batch=final_uniform` for the final batch. Its selection audit preserves the taxonomy at selection time.
+
+The taxonomy has accepted definitions and separate AI assessments; acceptance of definitions does not confirm every AI label. Structured human judgments and assignment completion should be checked against saved state rather than assumed complete. Workshop instrumentation and verification are recorded separately.
 
 Validation:
 
@@ -75,3 +71,19 @@ Validation:
 .venv/bin/python -m pytest analysis/review_app/test_server.py tests/test_normalization_metadata.py tests/test_langfuse_export.py -q
 node --check analysis/review_app/app.js
 ```
+
+### Contextual specification
+The Specification tab defaults to verbatim requirement excerpts selected from the pinned snapshot using conversation requests, caller roles, and recorded tools. Each excerpt explains its selection. General response requirements remain available alongside topic-specific requirements and recorded tool contracts. Selection is heuristic, not an exhaustive applicability determination or a failure judgment. Use Show full specification for omitted rules; search operates within the selected view. Selection refreshes when the conversation changes. No model calls or review labels are used.
+
+Offline selection checks: `node analysis/review_app/test_spec.cjs`.
+
+### Maps & groups
+Open `/?view=explore`. Cluster coordinates are a PCA projection of the standardized features in initial_sampling_audit.json, retaining 30.5% of variance. Colors retain original cluster assignments; positions are not failure predictions. Select dots or use the scenario picker to handle overlaps. The taxonomy tree uses the accepted definitions and source-separated AI assessments described below. Notes and original traces are accessible from tiles.
+
+## Accepted taxonomy and AI assessments
+
+Open `/?view=explore&map=taxonomy` for the taxonomy tree. It reads the accepted definitions and subtypes from `analysis/state/patterns.json`, rather than guessing categories from annotation keywords. Filter by traces with or without human observations, then present, absent, uncertain, or all assessments. Select a tile or subtype for explanations, exact supporting quotes, original human observations, and conversation links. The Notes panel and Taxonomy view also show source-separated AI assessments.
+
+`python -m analysis.review_app.assess_taxonomy` applies the rubric using the configured OpenAI account (API charges apply). It sends only synthetic conversation blocks and caller role/IDs, with prior session turns through the target; it does not send environment/location metadata, raw telemetry, or system prompts. It saves resumable, atomic output in `analysis/state/review_app/ai_assessments.json`. The runner requires explicit authorization to send the trace data to OpenAI.
+
+These assessments are not validated judges or human labels. They do not change annotations, human label files, Langfuse scores, review completion counts, or homework sampling. A null label means uncertain, not absent. Internal-operation disclosure uses the accepted customer-purpose refinement; the old specification is retained. All categories can overlap when distinct defects support them. Counts are model findings, not prevalence estimates.

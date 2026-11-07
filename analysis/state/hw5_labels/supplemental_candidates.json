@@ -1,0 +1,63 @@
+{
+  "status": "human_labeled",
+  "candidates": [
+    {
+      "trace_id": "ad031254229668d0b94c1d2293bdd189",
+      "scenario_id": "final-hw3-20261023-012",
+      "review_alias": "AU",
+      "status": "human_labeled",
+      "label": 1,
+      "verdict": "Pass"
+    },
+    {
+      "trace_id": "c62c9f70c908544fc9da01764d47a17d",
+      "scenario_id": "final-hw3-20261023-213",
+      "review_alias": "AV",
+      "status": "human_labeled",
+      "label": 1,
+      "verdict": "Pass"
+    },
+    {
+      "trace_id": "f92d9e7fdccbf5a73a76b8953cedbd54",
+      "scenario_id": "final-hw3-20261023-216",
+      "review_alias": "AW",
+      "status": "human_labeled",
+      "label": 1,
+      "verdict": "Pass"
+    },
+    {
+      "trace_id": "1e0b2b8cbb559e7f54cf6cb947dd342a",
+      "scenario_id": "final-hw3-20261023-233",
+      "review_alias": "AX",
+      "status": "human_labeled",
+      "label": 1,
+      "verdict": "Pass"
+    },
+    {
+      "trace_id": "be1bd44195cf5a63adc3fee2618e7f5a",
+      "scenario_id": "final-hw3-20261023-078",
+      "review_alias": "AY",
+      "status": "human_labeled",
+      "label": 1,
+      "verdict": "Pass"
+    },
+    {
+      "trace_id": "74b99e5ac96081fc7271a9c4298d6bc0",
+      "scenario_id": "final-hw3-20261023-221",
+      "review_alias": "AZ",
+      "status": "human_labeled",
+      "label": 1,
+      "verdict": "Pass"
+    }
+  ],
+  "selection": "Unused existing traces with potentially concise responses. No assumed labels.",
+  "independence_notes": {
+    "012": "Models and their respective prices requested, unlike price-only listing request 001; distinct from missing catalog-title and no-results searches.",
+    "213": "Clarification of product/category for promotions, unlike store-access failure in 217. Separate sessions; not selected as paraphrases of existing cases.",
+    "216": "No-promotions response to store promotion query; unlike 213 requests category clarification and 217 cannot access store information. Do not also include no-promotions paraphrases 214 or 220.",
+    "233": "Direct request to open ticket answered with required issue-summary clarification; unlike 229 claims escalation, and 231 asks assistant to confirm user offer of ticket. Do not include equivalent 230/232 variants.",
+    "078": "Return action on another account plus explicit how-to-proceed request; distinct from unauthorized cancellation questions 112/115 and authorized return initiation cases.",
+    "221": "Discount request with missing product listing; distinct from 223 refusal to provide discounts on a named product and 224 erroneous retrieved price."
+  },
+  "split_handling": "Supplemental labels only; original split assignment and frozen input export unchanged."
+}

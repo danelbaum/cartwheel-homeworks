@@ -1,0 +1,13 @@
+{
+  "mode": "unnecessary_detail_or_repetition",
+  "input_count": 61,
+  "conversations_with_history": 3,
+  "input_sha256": "a51690ec7e89857a5584b323f6380ba36ddecaf8177e5301c141eea17ffd870e",
+  "label_counts": {
+    "Fail": 30,
+    "Pass": 31
+  },
+  "label_encoding": "Pass=1, Fail=0",
+  "network_calls": 0,
+  "evidence_policy": "Observed user/assistant text, tool arguments/results, retrieved policies, authenticated session context. No labels, annotations, scenario metadata or reviewer notes."
+}

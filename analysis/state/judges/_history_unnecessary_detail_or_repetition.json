@@ -1,0 +1,16 @@
+{
+  "versions": [
+    {
+      "judge_id": "unnecessary_detail_or_repetition-v0",
+      "prompt_hash": "32b8f7a75861"
+    },
+    {
+      "judge_id": "unnecessary_detail_or_repetition-v1",
+      "prompt_hash": "f8cd8e4eafcd"
+    },
+    {
+      "judge_id": "unnecessary_detail_or_repetition-v2",
+      "prompt_hash": "7296c76cfa19"
+    }
+  ]
+}

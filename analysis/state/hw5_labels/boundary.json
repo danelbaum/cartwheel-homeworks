@@ -1,0 +1,85 @@
+{
+  "version": "chat-approved-explicit-objective-v4",
+  "evaluation_question": "Does the response include information irrelevant to the user\u2019s explicitly stated objective, or repeat information without helping fulfill that objective?",
+  "pass": "Focuses on the explicitly stated objective. Allow unrequested information only when it is indispensable to accomplishing the user\u2019s stated objective. Exclude information that is merely helpful or becomes necessary only under an unstated condition. A brief generic offer of additional help is allowed.",
+  "fail": "Identifiable irrelevant detail, unnecessary anticipation of an unstated follow-up, or repetition without useful clarification. Questions introducing a new objective remain distinct from an allowed generic offer.",
+  "revision": "User explicitly approves indispensable unrequested information under established circumstances, retaining generic help offers.",
+  "updated_at": "2026-11-07T01:24:19.988647+00:00",
+  "human_clarifications": [
+    {
+      "scenario": "003",
+      "clarification": "Speculation directly responsive to the user question can Pass this mode. This does not establish factual correctness."
+    },
+    {
+      "scenarios": [
+        "084",
+        "048"
+      ],
+      "clarification": "Unrequested information about absence of restocking fees is unnecessary for return initiation/eligibility questions in these cases. Also 084 unrequested absence of additional store policies is unnecessary."
+    },
+    {
+      "scenario": "229",
+      "clarification": "Saying escalation will happen and then saying a support ticket will be opened repeats the same point in this response."
+    },
+    {
+      "scenario": "224",
+      "clarification": "Flagging an obviously erroneous negative price as an apparent error is acceptable; human retains Pass."
+    },
+    {
+      "scenario": "170",
+      "clarification": "Explanation distinguishing handling and delivery durations remains acceptable; retain Pass."
+    },
+    {
+      "scenario": "024",
+      "clarification": "Shipping-provider contact suggestion exceeds status and tracking-availability request; change to Fail."
+    },
+    {
+      "scenario": "017",
+      "clarification": "Purchase-process suggestion responds to explicit no-payment-info-right-now constraint; retain Pass."
+    },
+    {
+      "scenario": "120",
+      "clarification": "Second cancellation-restriction sentence repeats the first; change to Fail."
+    },
+    {
+      "scenario": "003",
+      "clarification": "User explicitly asks about sales, so sales-related information is responsive; retain Pass."
+    },
+    {
+      "scenario": "169",
+      "clarification": "For this return-window question, no plus the return deadline is sufficient; retain Fail for the extra explanation."
+    },
+    {
+      "scenario": "139",
+      "clarification": "Repeating the return policy is unnecessary; retain Fail."
+    },
+    {
+      "scenario": "241",
+      "clarification": "Bank-processing information directly responds to the explicit question about receipt at the bank; retain Pass."
+    },
+    {
+      "scenario": "224",
+      "clarification": "User changes label to Fail on v2 review: the offer to report the issue is unnecessary. The qualification about the apparent price error remains acceptable.",
+      "supersedes": "Earlier Pass decision for 224"
+    },
+    {
+      "scenario": "170",
+      "clarification": "User changes 170 to Fail because it repeats that the two times should be added and offers an unnecessary lookup.",
+      "supersedes": "Earlier Pass decision for 170"
+    },
+    {
+      "scenario": "017",
+      "clarification": "User changes 017 to Fail because the suggestion to add the item to the cart is unnecessary.",
+      "supersedes": "Earlier Pass decision for 017"
+    },
+    {
+      "scenario": "177",
+      "clarification": "User changes 177 to Fail because the tracking information was not asked for.",
+      "supersedes": "Earlier Pass decision for 177"
+    }
+  ],
+  "indispensable_information_rule": "Allow unrequested information only when it is indispensable to accomplishing the user\u2019s stated objective. Exclude information that is merely helpful or becomes necessary only under an unstated condition.",
+  "necessity_test": "Judge necessity given the circumstances established in the conversation. Do not invent contingencies that would make an optional detail necessary. Ask: without this information, could the user still accomplish the stated objective? If yes, it does not qualify for this exception. Brief generic offers of help remain a separate allowed exception and need not be indispensable.",
+  "critical_context_clarification": "Allow context indispensable to correctly understanding the answer, given established circumstances, as well as to accomplishing the stated objective. Merely helpful context and hypothetical contingencies do not qualify. Brief generic help offers remain allowed.",
+  "prompt_application_status": "Documented after v2 evaluation; evaluated v2 prompt unchanged."
+}

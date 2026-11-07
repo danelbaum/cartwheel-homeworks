@@ -1,0 +1,10 @@
+const fs=require('fs'),vm=require('vm'),assert=require('node:assert/strict');
+const app=fs.readFileSync('analysis/review_app/app.js','utf8');
+const elements={};const ctx={state:{modes:[{name:'unnecessary_detail_or_repetition'}],annotations:[{trace_id:'reviewed',deleted:false}],ai_assessments:{labels:[{trace_id:'reviewed',mode:'unnecessary_detail_or_repetition',label:1},{trace_id:'new',mode:'unnecessary_detail_or_repetition',label:null}]}},traces:[],esc:s=>String(s??'').replaceAll('<','&lt;'),$:s=>(elements[s]??={innerHTML:''})};vm.createContext(ctx);
+vm.runInContext(app.slice(app.indexOf('const modeTitle='),app.indexOf('function renderExplore()')),ctx);
+assert.equal(ctx.noteGroups()[0].notes.length,1);
+vm.runInContext("treeScope='unreviewed'",ctx);assert.equal(ctx.scopedLabels().length,1);assert.equal(ctx.scopedLabels()[0].label,null);
+vm.runInContext("treeScope='reviewed'",ctx);assert.equal(ctx.scopedLabels()[0].trace_id,'reviewed');
+assert(ctx.assessmentCard({mode:'example',label:null,reason:'<script>'}).includes('AI · Uncertain'));
+assert(ctx.assessmentCard({mode:'example',label:1,reason:'<script>'}).includes('&lt;script>'));
+assert.equal(ctx.state.annotations.length,1);console.log('Taxonomy checks passed: scope, unknown labels, positive counts, provenance, escaping.');

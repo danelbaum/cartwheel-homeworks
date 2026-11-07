@@ -98,6 +98,40 @@ def build_trace(raw):
     return {'id': n['trace_id'], 'session_id': n['meta'].get('session_id') or n['trace_id'], 'scenario_id': n['meta'].get('scenario_id'), 'timestamp': n['timestamp'], 'role': n['meta'].get('role'), 'user_id': meta.get('cartwheel.user_id'), 'user_name': meta.get('cartwheel.user_name'), 'store_id': store, 'prompt_version': n['meta'].get('prompt_version'), 'blocks': blocks, 'tools': tools, 'system_prompts': systems, 'url': os.environ.get('LANGFUSE_HOST', '').rstrip('/') + raw.get('htmlPath', ''), 'raw': raw}
 
 
+def caller_context(trace):
+    """Supplement only identity-matched callers with saved pre-execution facts."""
+    result = {'name': trace.get('user_name'), 'role': trace.get('role'),
+              'user_id': trace.get('user_id'), 'store_id': trace.get('store_id'),
+              'store_name': None, 'supplemented': False}
+    source = ROOT / 'scenarios/support_scenarios.jsonl'
+    if not source.exists():
+        return result
+    for line in source.read_text().splitlines():
+        row = json.loads(line)
+        if row.get('id') != trace.get('scenario_id'):
+            continue
+        grounding = row.get('grounding', {})
+        user = grounding.get('authenticated_user', {})
+        if trace.get('user_id') is None or str(user.get('id')) != str(trace['user_id']):
+            return result
+        if trace.get('role') and user.get('role') != trace['role']:
+            return result
+        if trace.get('store_id') is not None and str(user.get('store_id')) != str(trace['store_id']):
+            return result
+        for key, source_key in [('name', 'name'), ('role', 'role'), ('store_id', 'store_id')]:
+            if result[key] is None and user.get(source_key) is not None:
+                result[key] = user[source_key]
+                result['supplemented'] = True
+        if result['store_id'] is not None:
+            store = next((v for v in grounding.get('stores', [])
+                          if str(v.get('id')) == str(result['store_id'])), None)
+            if store and store.get('name'):
+                result['store_name'] = store['name']
+                result['supplemented'] = True
+        return result
+    return result
+
+
 def load_live():
     global TRACES
     try:
@@ -252,7 +286,7 @@ def payload():
         first = group[0]
         sessions.append({'id': sid, 'trace_ids': [t['id'] for t in group], 'scenario_id': first['scenario_id'], 'role': first['role'], 'timestamp': first['timestamp'], 'preview': next((b['text'] for b in first['blocks'] if b['role'] == 'user'), '')})
     sessions.sort(key=lambda s: s['timestamp'] or '', reverse=True)
-    return {'status': dict(STATUS), 'sessions': sessions, 'annotations': annotations(), 'labels': label_records(), 'modes': get_modes(), 'suggestions': rows('suggestions.json', 'suggestions'), 'manifest': read_json(STATE / 'sample_manifest.json', None), 'spec': SPEC, 'spec_hash': SPEC_HASH, 'csrf': TOKEN}
+    return {'status': dict(STATUS), 'sessions': sessions, 'annotations': annotations(), 'labels': label_records(), 'ai_assessments': read_json(STATE / 'review_app/ai_assessments.json', {}), 'modes': get_modes(), 'suggestions': rows('suggestions.json', 'suggestions'), 'manifest': read_json(STATE / 'sample_manifest.json', None), 'spec': SPEC, 'spec_hash': SPEC_HASH, 'csrf': TOKEN}
 
 
 class Handler(BaseHTTPRequestHandler):
@@ -281,7 +315,7 @@ class Handler(BaseHTTPRequestHandler):
             if parsed.path == '/api/session':
                 sid = parse_qs(parsed.query).get('id', [''])[0]
                 group = sorted((t for t in TRACES.values() if t['session_id'] == sid), key=lambda t: (t['timestamp'] or '', t['id']))
-                return self.send({'traces': group})
+                return self.send({'traces': [{**t, 'caller_context': caller_context(t)} for t in group]})
         self.send({'error': 'Not found'}, 404)
     def do_POST(self):
         if self.headers.get('X-Review-Token') != TOKEN or self.headers.get('Content-Type') != 'application/json':
